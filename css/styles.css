@@ -1,0 +1,2905 @@
+/* ==========================================================================
+   VARIABLES DE MARCA (Design tokens de PREVITALIA)
+   ========================================================================== */
+:root {
+  /* Colores */
+  --azul-azul: #1C3A4E;
+  --azul-500: #3A6B8E;
+  --azul-400: #5F8CAB;
+  --petroleo: #98C0C8;
+  --petroleo-200: #CCE0E4;
+  --sand: #ECE9E7;
+  --sand-100: #F8F7F6;
+  --gris-500: #6D6F71;
+  --gris-700: #424446;
+  --gris: #A1A4A7;
+  --blanco: #FFFFFF;
+  --negro: #000000;
+  --azul-menu: #2D4B5F;
+  --petroleo-400: #5F95A1;
+ 
+  /* Tipografía */
+  --font-display: 'Michroma', sans-serif;
+  --font-body: 'Lexend', sans-serif;
+ 
+  /* Layout: 1440px ÷ 16 = 90rem */
+  --content-max-width: 90rem;
+ 
+  /* Sombra "sm" del sistema de diseño (se reutiliza en box-shadow y en filter:drop-shadow) */
+  --shadow-sm-1: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.06);
+  --shadow-sm-2: 0 0.0625rem 0.09375rem rgba(0, 0, 0, 0.1);
+}
+ 
+/* ==========================================================================
+   RESET BÁSICO
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  font-family: var(--font-body);
+  color: var(--azul-azul);
+  background-color: var(--sand-100);
+  overflow-x: hidden;
+}
+ 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ 
+img {
+  max-width: 100%;
+  display: block;
+}
+ 
+/* ==========================================================================
+   CONTENEDOR GENERAL DEL SITIO
+   ========================================================================== */
+.page {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  position: relative;
+  background-color: var(--sand-100);
+}
+ 
+/* ==========================================================================
+   PATRONES REUTILIZABLES (evitan repetir el mismo bloque en cada sección)
+   ========================================================================== */
+ 
+/* Todos los títulos H2 del sitio comparten esta tipografía;
+   solo cambia el color, que cada sección define por separado. */
+.what-we-do__intro h2,
+.why-us__title,
+.services__intro h2,
+.who-we-are__title,
+.sectors__intro h2,
+.testimonials__intro h2,
+.contact__intro h2,
+.contact__form-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 3rem;          /* 48px */
+  line-height: 4rem;        /* 64px */
+  letter-spacing: -0.06rem; /* -0.96px */
+  text-align: center;
+}
+ 
+/* Párrafo Light 16px, color azul-azul*/
+.who-we-are__text,
+.services__card p,
+.why-us__desc p,
+.contact__value,
+.testimonials__quote,
+.who-we-are__checklist-intro {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;     /* 16px */
+  line-height: 1.5rem; /* 24px */
+  color: var(--azul-azul);
+}
+ 
+/* Caja de ícono cuadrada de 67px con esquinas redondeadas:
+   solo cambia el fondo (blanco, teal, o degradado azul) en cada uso */
+.why-us__icon,
+.services__icon,
+.contact__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.1875rem;  /* 67px */
+  height: 4.1875rem; /* 67px */
+  padding: 0.625rem 0.5625rem;
+  border-radius: 0.75rem; /* 12px */
+}
+ 
+.why-us__icon img,
+.services__icon img,
+.contact__icon img {
+  width: 3rem;  /* 48px */
+  height: 3rem; /* 48px */
+}
+ 
+/* ==========================================================================
+   BOTONES (reutilizables en todo el sitio)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* 8px */
+  border-radius: 9999px; /* excepción: valor de "píldora", no se convierte */
+  font-family: var(--font-body);
+  font-weight: 300;
+  white-space: nowrap;
+  transition: background-color 0.33s ease-in-out, color 0.33s ease-in-out, border-color 0.33s ease-in-out;
+}
+ 
+.btn:active {
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+ 
+/* Botón primario */
+.btn--primary,
+.btn--outline {
+  position: relative;
+  z-index: 0; 
+  overflow: hidden;
+}
+
+.btn--primary::before,
+.btn--outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.33s ease-in-out;
+}
+
+/* Botón primario*/
+.btn--primary {
+  background: linear-gradient(to bottom, var(--petroleo), var(--petroleo-200));
+  color: var(--azul-azul);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  width: 21.6875rem; /* 347px */
+  height: 4.375rem;
+}
+
+.btn--primary::before {
+  background-color: var(--petroleo-200);
+}
+
+.btn--primary:hover::before {
+  opacity: 1;
+}
+
+.btn--primary:active::before {
+  background-color: var(--petroleo);
+  opacity: 1;
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+
+/* Botón outline*/
+.btn--outline {
+  border: 1px solid var(--blanco);
+  color: var(--blanco);
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  width: 13.5rem; /* 216px */
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.btn--outline::before {
+  background: linear-gradient(to bottom, var(--petroleo), var(--petroleo-200));
+}
+
+.btn--outline:hover {
+  color: var(--azul-azul);
+  border-color: transparent;
+  transition-delay: 0.12s;
+}
+
+.btn--outline:hover::before {
+  opacity: 1;
+}
+
+.btn--outline:active {
+  color: var(--azul-azul);
+  border-color: transparent;
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+
+.btn--outline:active::before {
+  background: var(--petroleo);
+  opacity: 1;
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+ 
+/* Botón píldora pequeño*/
+.btn--pill-sm {
+  background-color: var(--petroleo);
+  color: var(--azul-azul);
+  font-size: 1rem;      /* 16px */
+  line-height: 1.5rem;  /* 24px */
+  padding: 0.375rem 0.75rem; /* 6px 12px */
+}
+
+.btn--pill-sm:hover {
+  background-color: var(--petroleo-200);
+}
+ 
+/* ==========================================================================
+   HERO + HEADER
+   ========================================================================== */
+.hero {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-height: 50rem; /* 800px */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+ 
+  /* padding calculado: mantiene el texto alineado a donde estaría
+     el borde del marco de 1440px, aunque el fondo se extienda
+     de punta a punta de la pantalla */
+  padding-top: 7rem;
+  padding-bottom: 12rem;
+  padding-left: max(11rem, calc((100vw - 90rem) / 2 + 11rem));
+  padding-right: max(13rem, calc((100vw - 90rem) / 2 + 13rem));
+ 
+  /* Imagen de fondo + overlay degradado*/
+  background-image:
+    linear-gradient(to bottom, rgba(28, 58, 78, 0.78) 60.19%, rgba(152, 192, 200, 0.78) 100%),
+    url("../img/hero-trabajador.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+ 
+/* ---------- Header ---------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  height: 4rem;      /* 64px */
+  padding: 0 4rem;   /* 0 64px */
+  background-color: transparent;
+  transform: translateY(0);
+  transition: transform 0.33s ease-in-out, background-color 0.33s ease-in-out;
+}
+ 
+.header--hidden {
+  transform: translateY(-100%);
+}
+
+.header--scrolled {
+  background-color: rgba(248, 247, 246, 0.9); /* sand-100 al 90% */
+  align-items: center;
+}
+
+.header--scrolled .header__nav a {
+  color: var(--azul-azul);
+}
+
+.header--scrolled .header__menu-toggle img {
+  filter: brightness(0);
+}
+
+.header__logo {
+  width: 9.25rem; /* 148px */
+  height: auto;
+}
+ 
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* 20px */
+}
+ 
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* 20px */
+}
+ 
+.header__nav a {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;     /* 16px */
+  line-height: 1.5rem; /* 24px */
+  color: var(--blanco);
+  transition: color 0.33s ease-in-out;
+}
+
+.header__nav a:hover {
+  color: var(--petroleo);
+}
+
+.header__nav a:active {
+  color: var(--petroleo-400);
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+
+.header__menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+ 
+.mobile-menu {
+  display: none;
+}
+
+
+/* ---------- Contenido del Hero ---------- */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;      /* 36px */
+  max-width: 55.75rem; /* 892px */
+}
+ 
+.hero__title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 5.125rem;     /* 82px */
+  line-height: 6rem;       /* 96px */
+  letter-spacing: -0.1025rem; /* -1.64px */
+  color: var(--blanco);
+}
+ 
+.hero__title--accent {
+  color: var(--petroleo);
+}
+ 
+.hero__subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 2rem;         /* 32px */
+  line-height: 2.5rem;     /* 40px */
+  letter-spacing: -0.04rem; /* -0.64px */
+  color: var(--blanco);
+}
+ 
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 4rem; /* 64px */
+}
+ 
+/* ==========================================================================
+   BARRA DE STATS
+   ========================================================================== */
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 67.75rem; /* 1084px */
+  margin: -5rem auto 0; /* -80px*/
+  position: relative;
+  z-index: 2;
+}
+ 
+.stats__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.875rem; /* 14px */
+  width: 14.375rem;  /* 230px */
+  height: 14.375rem; /* 230px */
+  background-color: var(--blanco);
+  border-radius: 0.5rem; /* 8px */
+  padding: 0.875rem 4rem; /* 14px 64px */
+  box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.1),
+              0 0.25rem 0.1875rem rgba(0, 0, 0, 0.1);
+}
+ 
+.stats__card--iso {
+  box-shadow: 0 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.1),
+              0 0.25rem 0.375rem -0.0625rem rgba(0, 0, 0, 0.1);
+}
+ 
+.stats__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.625rem;  /* 90px */
+  height: 5.625rem; /* 90px */
+  border-radius: 50%;
+  background-color: var(--sand);
+}
+ 
+.stats__icon img {
+  width: 3.5rem;  /* 56px */
+  height: 3.5rem; /* 56px */
+}
+ 
+.stats__number {
+  font-family: var(--font-display);
+  font-size: 2.25rem;      /* 36px */
+  line-height: 2.25rem;    /* 36px */
+  letter-spacing: -0.045rem; /* -0.72px */
+  color: var(--azul-azul);
+  white-space: nowrap;
+}
+ 
+.stats__label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;     /* 16px */
+  line-height: 1.5rem; /* 24px */
+  color: var(--gris-700);
+  text-align: center;
+  white-space: nowrap;
+}
+ 
+.stats__label--split {
+  display: flex;
+  flex-direction: column;
+  white-space: normal;
+}
+ 
+.stats__label-bold {
+  font-weight: 500;
+  color: var(--azul-azul);
+}
+ 
+/* ==========================================================================
+   ¿QUÉ HACEMOS?
+   ========================================================================== */
+.what-we-do {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 6rem 4rem; /* 96px arriba/abajo, 64px lados */
+}
+ 
+.what-we-do__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 32px */
+  width: 46.9375rem; /* 751px */
+}
+ 
+.what-we-do__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* 12px */
+  text-align: center;
+}
+ 
+.what-we-do__intro h2 {
+  color: var(--azul-azul);
+}
+ 
+.what-we-do__intro p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--gris-700);
+}
+ 
+.what-we-do__intro strong {
+  font-weight: 500;
+  color: var(--azul-azul);
+}
+ 
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+ 
+.checklist__item {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  background-color: var(--blanco);
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow-sm-1), var(--shadow-sm-2);
+}
+ 
+.checklist__icon {
+  width: 2.625rem;
+  height: 2.625rem;
+  flex-shrink: 0;
+}
+ 
+.checklist__item span {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--gris-700);
+}
+ 
+/* ---------- Composición geométrica ---------- */
+.what-we-do__graphic {
+  position: relative;
+  width: 32.6875rem;
+  height: 42.3125rem;
+  flex-shrink: 0;
+}
+ 
+.shape {
+  position: absolute;
+}
+ 
+.shape--navy {
+  left: 3.8125rem;
+  top: 4.1875rem;
+  width: 27.1875rem;
+  height: 36.4375rem;
+  background: linear-gradient(180deg, var(--azul-500), var(--azul-azul));
+  border-bottom-right-radius: 4.5rem;
+}
+ 
+.shape--photo {
+  left: 0;
+  top: 15rem;
+  width: 27.3125rem;
+  height: 16.875rem;
+  background-color: var(--petroleo);
+  background-image: url("../img/manos.png");
+  background-size: cover;
+ background-position: right center;
+  border-top-left-radius: 4.5rem;
+}
+ 
+.shape--teal-top {
+  left: 15.875rem;
+  top: 0;
+  width: 16.8125rem;
+  height: 10.5625rem;
+  background-color: var(--petroleo);
+  border-top-right-radius: 4.5rem;
+}
+ 
+.shape--teal-bottom {
+  left: 9.5rem;
+  top: 36.3125rem;
+  width: 16.5rem;
+  height: 6rem;
+  background-color: var(--petroleo);
+  border-bottom-left-radius: 4.5rem;
+}
+ 
+/* ==========================================================================
+   POR QUÉ ELEGIR PREVITALIA
+   ========================================================================== */
+.why-us {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  padding-left: max(3.875rem, calc((100vw - 90rem) / 2 + 3.875rem));
+  padding-right: max(3.9375rem, calc((100vw - 90rem) / 2 + 3.9375rem));
+
+  background: linear-gradient(to bottom, var(--azul-azul), var(--azul-500));
+}
+ 
+.why-us__title--muted {
+  color: var(--sand);
+}
+ 
+.why-us__title--accent {
+  color: var(--petroleo);
+}
+
+.why-us__title {
+  margin-bottom: 0.75rem; /* 12px hacia el subtítulo */
+}
+
+.why-us__subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--blanco);
+  margin-bottom: 2rem; /* 32px */
+}
+ 
+.why-us__cards {
+  display: flex;
+  align-items: stretch;
+  gap: 2.25rem;
+  width: 100%;
+  filter: drop-shadow(var(--shadow-sm-1)) drop-shadow(var(--shadow-sm-2));
+}
+ 
+.why-us__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.625rem;
+  flex: 1;
+  min-width: 0;
+  background-color: var(--blanco);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+ 
+.why-us__icon {
+  background-color: var(--petroleo);
+}
+ 
+.why-us__card h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.03rem;
+  color: var(--azul-azul);
+}
+ 
+.why-us__desc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+ 
+.why-us__card--lenguaje .why-us__desc {
+  gap: 1.25rem;
+}
+ 
+/* ==========================================================================
+   SERVICIOS DESTACADOS
+   ========================================================================== */
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 6rem 4rem;
+}
+ 
+.services__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
+ 
+.services__intro h2 {
+  color: var(--azul-azul);
+}
+ 
+.services__intro p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.25rem;   
+  line-height: 1.75rem; 
+  letter-spacing: normal; 
+  color: var(--gris-700); 
+}
+ 
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  filter: drop-shadow(var(--shadow-sm-1)) drop-shadow(var(--shadow-sm-2));
+}
+ 
+.services__card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: linear-gradient(to bottom, var(--petroleo), var(--petroleo-200));
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+ 
+.services__card--capacitaciones {
+  height: 19.1875rem;
+}
+ 
+.services__icon {
+  background-color: var(--blanco);
+}
+ 
+.services__card h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.03rem;
+  color: var(--azul-azul);
+}
+ 
+.services__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--azul-azul);
+  transition: color 0.33s ease-in-out, transform 0.33s ease-in-out;
+}
+
+.services__link:hover {
+  color: var(--azul-500);
+  transform: translateX(0.75rem); /* 12px */
+}
+
+.services__link:active {
+  color: var(--azul-500);
+  transform: translateX(0.75rem); /* 12px */
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+
+.services__dots {
+  display: none;
+}
+ 
+/* ==========================================================================
+   QUIÉN ESTÁ DETRÁS DE PREVITALIA
+   ========================================================================== */
+.who-we-are {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  display: flex;
+  align-items: stretch;
+  gap: 2rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  padding-left: max(0px, calc((100vw - 90rem) / 2));
+  padding-right: max(3.9375rem, calc((100vw - 90rem) / 2 + 3.9375rem));
+  background-color: var(--blanco);
+}
+ 
+.who-we-are__photo {
+  width: 32rem;
+  flex-shrink: 0;
+  border: 2px dashed var(--gris);
+  border-radius: 1rem;
+  background-color: var(--sand);
+  order: -1; /* en desktop, siempre primero */
+}
+ 
+.who-we-are__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+ 
+.who-we-are__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 53.8125rem;
+  margin: 0 auto;
+}
+ 
+.who-we-are__title {
+  color: var(--azul-azul);
+  white-space: nowrap;
+}
+ 
+.who-we-are__title--accent {
+  color: var(--petroleo);
+}
+ 
+.who-we-are__card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+  padding: 2.5rem 1rem;
+  background-color: var(--sand);
+  border-radius: 1rem;
+}
+ 
+.who-we-are__checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 1.5rem;
+  background-color: var(--blanco);
+  border-left: 4px solid var(--azul-azul);
+  border-radius: 0.75rem;
+  height: 18.9375rem; /* 303px */
+}
+ 
+.who-we-are__check-item {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+ 
+.who-we-are__check-icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
+ 
+.who-we-are__check-item span {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--gris-500);
+}
+ 
+.who-we-are__quote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(to right, var(--petroleo), var(--petroleo-200));
+  border-radius: 0.75rem;
+}
+ 
+.who-we-are__quote p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--azul-azul);
+  text-align: center;
+}
+ 
+/* ==========================================================================
+   SECTORES DONDE TRABAJAMOS
+   ========================================================================== */
+.sectors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 6rem 4rem;
+}
+ 
+.sectors__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+  color: var(--azul-azul);
+}
+ 
+.sectors__intro p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--gris-700);
+}
+ 
+.sectors__grid {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 68rem;
+}
+ 
+.sectors__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+ 
+.sectors__icon {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: linear-gradient(to bottom, var(--petroleo), var(--petroleo-200));
+  transition: transform 0.33s ease-in-out;
+}
+
+.sectors__icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 1rem;
+  background-color: var(--blanco);
+  box-shadow: var(--shadow-sm-1), var(--shadow-sm-2);
+  opacity: 0;
+  transition: opacity 0.33s ease-in-out;
+}
+
+.sectors__item:hover .sectors__icon {
+  transform: scale(1.0685); /* 146px → 156px */
+}
+
+.sectors__item:hover .sectors__icon::before {
+  opacity: 1;
+}
+ 
+.sectors__icon img {
+  width: 5.125rem;
+  height: 5.125rem;
+}
+ 
+.sectors__item p {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--azul-azul);
+  text-align: center;
+}
+ 
+/* ==========================================================================
+   CLIENTES Y TESTIMONIOS
+   ========================================================================== */
+.testimonials {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 6rem; /* 96px en todos los lados*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem;
+  background: linear-gradient(to bottom, var(--azul-azul), var(--azul-500) 50%);
+}
+ 
+.testimonials__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+  color: var(--blanco);
+  max-width: 82rem;
+}
+ 
+.testimonials__title--accent {
+  color: var(--petroleo);
+}
+ 
+.testimonials__intro p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+ 
+.testimonials__subtitle--accent {
+  color: var(--petroleo);
+}
+ 
+.testimonials__grid {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.testimonials__track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  flex-shrink: 0; 
+  animation: testimonials-marquee 100s linear infinite;
+}
+
+.testimonials__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.testimonials__card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  width: 19rem;
+  padding: 1.5rem 1.5rem 2.5rem;
+  background-color: var(--blanco);
+  border-radius: 1rem;
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__track {
+    animation: none;
+  }
+}
+ 
+.testimonials__divider {
+  border: none;
+  border-top: 1px solid rgba(28, 58, 78, 0.1);
+  margin: 0;
+}
+ 
+.testimonials__author-name {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--azul-azul);
+}
+ 
+.testimonials__author-company {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--petroleo);
+}
+
+.testimonials__dots {
+  display: none;
+}
+ 
+/* ==========================================================================
+   CONTACTO
+   ========================================================================== */
+.contact {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding: 6rem 4rem;
+}
+ 
+/* ---------- Columna izquierda: intro + tarjeta de datos ---------- */
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2.25rem;
+  width: 26rem;
+  height: 34.4375rem; 
+}
+ 
+.contact__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  color: var(--azul-azul);
+}
+ 
+.contact__intro p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--gris-700);
+}
+ 
+.contact__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem; 
+  height: 20.6875rem; 
+  padding: 1.5rem 1.5rem 2rem;
+  background-color: var(--blanco);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm-1), var(--shadow-sm-2);
+}
+ 
+.contact__row {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+ 
+.contact__icon {
+  background: linear-gradient(to bottom, var(--azul-azul), var(--azul-500));
+  flex-shrink: 0;
+}
+ 
+.contact__text {
+  display: flex;
+  flex-direction: column;
+  width: 16.0625rem;
+}
+ 
+.contact__label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--azul-azul);
+}
+ 
+/* ---------- Columna derecha: tarjeta del formulario ---------- */
+.contact__form-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 40.0625rem;
+  height: 34.4375rem; 
+  padding: 1.5rem 1.5rem 2rem;
+  background-color: var(--blanco);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm-1), var(--shadow-sm-2);
+}
+ 
+.contact__form-title {
+  color: var(--azul-azul);
+}
+ 
+.contact__form-title--accent {
+  color: var(--petroleo);
+}
+ 
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.contact__required {
+  color: #1C3A4E; 
+}
+ 
+.contact__form-row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+ 
+.contact__form-col {
+  display: flex;
+  flex-direction: column;
+  width: 18.03125rem; /* 288.5px */
+  flex: none;
+  gap: 0.75rem; /* 12px */
+  min-width: 0;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem; /* 2px entre el label y su input */
+  width: 100%;
+}
+
+.contact__form-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.75rem;  /* 12px */
+  line-height: 1rem;   /* 16px */
+  color: var(--azul-azul);
+}
+ 
+.contact__input,
+.contact__textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--gris);
+  border-radius: 0.5rem;
+  background-color: var(--blanco);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--azul-azul);
+  transition: border-color 0.33s ease-in-out;
+}
+ 
+.contact__input {
+  height: 3rem;
+}
+ 
+.contact__input::placeholder,
+.contact__textarea::placeholder {
+  color: var(--gris);
+}
+ 
+.contact__textarea {
+  height: 6rem;
+  resize: none;
+}
+
+.contact__input:focus,
+.contact__textarea:focus {
+  outline: none;
+  border-color: var(--azul-500);
+  box-shadow: 0 0 0 1px var(--azul-500)
+}
+ 
+.contact__submit {
+  width: 100%;
+  height: 2.875rem; /* 46px */
+  padding: 0 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom, var(--petroleo), var(--petroleo-200));
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--azul-azul);
+  cursor: pointer;
+  transition: opacity 0.33s ease-in-out;
+}
+
+.contact__submit:hover {
+  opacity: 0.85;
+}
+
+.contact__submit:active {
+  background: var(--petroleo);
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+
+ 
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem;
+ 
+  padding: 4.5rem 4rem;
+  background: linear-gradient(to bottom, var(--azul-500), var(--azul-azul) 50%);
+}
+ 
+.footer__top {
+  display: flex;
+  align-items: center;
+  gap: 7.3125rem;
+  width: 100%;
+  max-width: 67.5625rem;
+}
+ 
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+ 
+.footer__logo {
+  width: 24.125rem;
+  height: auto;
+}
+ 
+.footer__tagline {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--blanco);
+  text-align: center;
+  max-width: 24.125rem;
+}
+ 
+.footer__columns {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+}
+ 
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 8.5625rem;
+}
+ 
+.footer__col--contact {
+  width: 11.1875rem;
+  align-items: center;
+}
+ 
+.footer__col-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--petroleo);
+}
+ 
+.footer__col--contact .footer__col-title {
+  text-align: left;
+}
+
+.footer__contact-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+ 
+.footer__col-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ 
+.footer__col-list a {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--blanco);
+  transition: color 0.33s ease-in-out;
+}
+
+.footer__col-list a:hover {
+  color: var(--petroleo);
+}
+
+.footer__col-list a:active {
+  color: var(--petroleo-400);
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+
+.footer__col-list a,
+.footer__legal-link {
+  width: fit-content;
+}
+
+.footer__col-list a span,
+.footer__legal-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: color 0.33s ease-in-out, background-size 0.33s ease-in-out;
+}
+
+.footer__col-list a:hover span,
+.footer__legal-link:hover {
+  background-size: 100% 1px;
+}
+
+.footer__col-list a:active span,
+.footer__legal-link:active {
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+ 
+.footer__contact-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+ 
+.footer__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+ 
+.footer__contact-icon {
+  width: 1rem;
+  height: 1rem;
+}
+ 
+.footer__contact-label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--petroleo);
+}
+ 
+.footer__contact-value {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--blanco);
+  margin-bottom: 0.5rem;
+}
+ 
+.footer__divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 67.5625rem;
+  margin: 0;
+}
+ 
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 67.5625rem;
+}
+
+.footer__legal-link {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--blanco);
+  transition: color 0.33s ease-in-out, background-size 0.33s ease-in-out;
+}
+
+.footer__legal-link:hover {
+  color: var(--petroleo);
+}
+
+.footer__legal-link:hover {
+  color: var(--petroleo);
+}
+
+.footer__legal-link:active {
+  color: var(--petroleo-400);
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+ 
+.footer__copyright {
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+}
+ 
+.footer__copyright-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+ 
+.footer__copyright span {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--blanco);
+  white-space: nowrap;
+}
+
+/* ---------- Reveal al hacer scroll ---------- */
+.js-reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.js-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============ HEADER PÁGINAS LEGALES ============ */
+.header--legal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 5.125rem; /* 82px */
+  padding: 0 4rem;
+  background: linear-gradient(to right, var(--azul-azul), var(--azul-500));
+  transform: translateY(0);
+  transition: transform 0.33s ease-in-out;
+  height: 4rem; 
+}
+
+.header__nav--legal {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* 20px */
+}
+
+.header__nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* 32px */
+}
+
+.header--legal .header__logo {
+  width: 9.25rem; /* 148px */
+  height: auto;
+}
+
+.header__nav-links a {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--blanco);
+  transition: color 0.33s ease-in-out;
+}
+
+.header__nav-links a:hover {
+  color: var(--petroleo);
+}
+
+.header__nav-links a:active {
+  color: var(--azul-azul);
+  transition-duration: 80ms;
+  transition-timing-function: linear;
+}
+
+/* ============ CONTENIDO PÁGINA LEGAL ============ */
+.legal {
+  padding: 10rem 1.5rem 6rem; 
+  background-color: var(--sand-100);
+}
+
+.legal__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2.25rem;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+
+.legal__main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+
+.legal__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.legal__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.legal__eyebrow-line {
+  width: 2.8125rem;
+  height: 0;
+  border-top: 2px solid var(--petroleo);
+}
+
+.legal__eyebrow-text {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.04rem;
+  color: var(--petroleo);
+}
+
+.legal__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  width: 100%;
+}
+
+.legal__title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 4rem;
+  letter-spacing: -0.06rem;
+  color: var(--azul-azul);
+}
+
+.legal__updated {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--gris-700);
+}
+
+.legal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  padding-bottom: 2.25rem;
+  border-bottom: 0.5px solid var(--gris);
+}
+
+.legal__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+  width: 100%;
+}
+
+.legal__item-head {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.legal__item-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.25rem;
+  background-color: var(--petroleo);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  color: var(--azul-azul);
+  box-shadow: var(--shadow-sm-1), var(--shadow-sm-2);
+}
+
+.legal__item-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.03rem;
+  color: var(--azul-azul);
+}
+
+.legal__item-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--gris-700);
+}
+
+.legal__item-text a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.legal__note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--blanco);
+  box-shadow: var(--shadow-sm-1), var(--shadow-sm-2);
+}
+
+.legal__note-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.25rem;
+ background-color: var(--azul-azul);
+}
+
+.legal__note-icon img {
+  width: 1.3125rem;
+  height: 1.3125rem;
+}
+
+.legal__note-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--azul-azul);
+  text-align: center;
+}
+
+/* ==========================================================================
+   RESPONSIVE — MOBILE (hasta 640px)
+   ========================================================================== */
+@media (max-width: 640px) {
+
+  /* ---------- Header ---------- */
+  .header {
+    height: 4rem;
+    padding: 0 1.75rem; /* 28px lados */
+  }
+
+  .header__logo {
+    width: 7.9375rem; /* 127px */
+    height: 2.5rem;   /* 40px */
+  }
+
+  .header__right {
+    display: none;
+  }
+
+  .mobile-menu__nav {
+  position: absolute;
+  top: 6.5rem; /* 104px: deja 40px de espacio bajo el logo */
+  left: 1.75rem;
+}
+
+  .header__menu-toggle {
+    display: flex;
+    width: 2.5rem;  /* 40px */
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+  padding-top: 9rem;
+  padding-bottom: 12rem; 
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: auto;
+  background-position: 80% top;
+
+  background-image:
+    linear-gradient(rgba(28, 58, 78, 0.86), rgba(28, 58, 78, 0.86)),
+    url("../img/hero-trabajador.png");
+}
+
+  .hero__content {
+    max-width: 100%;
+    gap: 0;
+  }
+
+.hero__title {
+  font-size: 3rem;
+  line-height: 4rem;
+  letter-spacing: -0.06rem;
+  margin-bottom: 1.25rem; /* 20px, espacio hacia el subtítulo */
+}
+
+.hero__actions {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 2.75rem; /* 44px, espacio desde el subtítulo */
+}
+
+  .hero__subtitle {
+    font-size: 1.5rem;        /* 24px */
+    line-height: 2rem;        /* 32px */
+    letter-spacing: -0.03rem; /* -0.48px */
+  }
+
+  .btn--primary,
+  .btn--outline {
+    width: 100%;
+  }
+
+  /* ---------- Barra de stats: grid 2x2 en mobile ---------- */
+  .stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 100%;
+  width: 100%;
+  margin: -8rem auto 0; 
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+  .stats__card {
+    width: 100%;
+    height: auto;
+    padding: 0.875rem 1rem; /* 14px 16px */
+  }
+
+  .stats__icon {
+    width: 4rem;    /* 64px */
+    height: 4rem;
+    padding: 1.0625rem; /* 17px */
+  }
+
+  .stats__icon img {
+    width: 2.125rem; /* 34px */
+    height: 2.125rem;
+  }
+
+  .stats__number {
+    font-size: 1.5rem;   /* 24px */
+    line-height: 2.25rem; /* 36px */
+  }
+
+  .stats__label {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  /* ---------- Panel del menú mobile ---------- */
+  .mobile-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  padding: 1rem 1rem 1rem 1.75rem; /* 16px 16px 16px 28px, sin padding-top extra */
+  background: linear-gradient(to right, var(--azul-azul), var(--azul-500));
+  z-index: 100;
+  transition: height 0.33s ease-in-out;
+}
+
+  .mobile-menu.is-open {
+  display: flex;
+ height: 20.5rem; 
+}
+
+  .mobile-menu__logo {
+    position: absolute;
+    top: 1.5rem;   /* 24px */
+    left: 1.75rem; /* 28px */
+    width: 7.9375rem; /* 127px */
+    height: 2.5rem;
+  }
+
+  .mobile-menu__close {
+  position: absolute;
+  top: 1.5rem;      /* 24px */
+  right: 1.6875rem; /* 27px */
+  width: 2.5rem;    /* 40px */
+  height: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu__close img {
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) invert(1);
+}
+
+  .mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* 20px */
+  }
+
+  .mobile-menu__nav a {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1rem;     /* 16px */
+    line-height: 1.5rem; /* 24px */
+    color: var(--blanco);
+  }
+
+  /* ---------- ¿Qué hacemos? ---------- */
+  .what-we-do {
+    flex-direction: column;
+    gap: 0;
+    padding: 5rem 1rem; /* 80px 16px */
+  }
+
+  .what-we-do__text {
+    width: 100%;
+    gap: 2rem; /* 32px */
+  }
+
+  .what-we-do__intro h2 {
+    font-size: 2rem;          /* 32px */
+    line-height: 2.5rem;      /* 40px */
+    letter-spacing: -0.04rem; /* -0.64px */
+  }
+
+  .what-we-do__intro p {
+    font-size: 1rem;     /* 16px */
+    line-height: 1.5rem; /* 24px */
+    color: #57595B;      /* gris-medio-600, distinto al gris que usa desktop aquí */
+  }
+
+  .checklist {
+  gap: 0.75rem; /* 12px */
+}
+
+  .checklist__item {
+    width: 100%;
+    padding: 0.75rem 2.125rem 0.75rem 1.8125rem; /* 12px 34px 12px 29px */
+    gap: 2.25rem; /* 36px */
+  }
+
+  .checklist__icon {
+    width: 2rem;  /* 32px */
+    height: 2rem;
+  }
+
+  .checklist__item span {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+    color: #57595B;
+  }
+
+  .what-we-do__graphic {
+    width: 100%;
+    height: 32.0625rem; /* 513px */
+    margin-top: 4rem;   /* 64px, espacio después del checklist */
+  }
+
+  .shape--navy {
+    left: 2.875rem;    /* 46px */
+    top: 3.1875rem;    /* 51px */
+    width: 20.625rem;  /* 330px */
+    height: 27.625rem; /* 442px */
+  }
+
+  .shape--photo {
+    left: 0;
+    top: 11.375rem;    /* 182px */
+    width: 20.6875rem; /* 331px */
+    height: 12.75rem;  /* 204px */
+  }
+
+  .shape--teal-top {
+    left: 12rem;      /* 192px */
+    top: 0;
+    width: 12.75rem;  /* 204px */
+    height: 7.9375rem; /* 127px */
+  }
+
+  .shape--teal-bottom {
+    left: 7.1875rem;  /* 115px */
+    top: 27.4375rem;  /* 439px */
+    width: 12.5rem;   /* 200px */
+    height: 4.625rem; /* 74px */
+  }
+
+  /* ---------- Por qué elegir PREVITALIA ---------- */
+  .why-us {
+    padding-top: 5rem;    /* 80px */
+    padding-bottom: 5rem;
+    padding-left: 1rem;   /* 16px */
+    padding-right: 1rem;
+    gap: 0;
+  }
+
+  .why-us__title {
+    font-size: 2rem;          /* 32px */
+    line-height: 2.5rem;      /* 40px */
+    letter-spacing: -0.04rem; /* -0.64px */
+    margin-bottom: 0.75rem; /* 12px hacia el subtítulo */
+  }
+
+  .why-us__subtitle {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--blanco);
+  text-align: center;
+  margin-bottom: 2rem; /* 32px hacia las tarjetas, para mantener ese espacio como estaba */
+}
+
+  .why-us__cards {
+    flex-direction: column;
+    gap: 1rem; /* 16px */
+  }
+
+  .why-us__card {
+   flex: none;
+  width: 100%; 
+  height: 16.5rem; /* 264px, tarjetas 1 y 3 */
+  }
+
+  .why-us__card--lenguaje {
+  height: 19rem;
+}
+
+.why-us__card h3 {
+  font-size: 1.25rem;   /* 20px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.why-us__desc p {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
+.why-us__card--lenguaje .why-us__desc {
+  gap: 0.75rem; /* 12px, igual que las otras tarjetas en mobile */
+}
+
+/* ---------- Servicios destacados ---------- */
+  .services {
+    padding: 5rem 1rem; /* 80px 16px */
+    gap: 0;
+  }
+
+  .services__intro {
+    width: 100%;
+    margin-bottom: 2rem; /* 32px */
+  }
+
+  .services__intro h2 {
+    font-size: 2rem;          /* 32px */
+    line-height: 2.5rem;      /* 40px */
+    letter-spacing: -0.04rem; /* -0.64px */
+    margin-bottom: 0.75rem;   /* 12px */
+  }
+
+  .services__intro p {
+    font-size: 1rem;     /* 16px */
+    line-height: 1.5rem; /* 24px */
+    letter-spacing: normal;
+    color: var(--gris-500);
+  }
+
+  /* carrusel horizontal deslizable */
+  .services__grid--mobile-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 1rem; 
+  gap: 1.25rem;
+  width: 100vw;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+  .services__grid--mobile-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+  .services__card {
+    flex: none;
+    width: 16.25rem; /* 260px */
+    scroll-snap-align: start;
+  }
+
+  .services__card--capacitaciones {
+    height: auto;
+  }
+
+  .services__card h3 {
+    font-size: 1.25rem;   /* 20px */
+    line-height: 1.75rem; /* 28px */
+    color: #1B3C44;       /* petroleo-700, distinto al azul-azul de desktop */
+  }
+
+  .services__card p {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+    color: #1B3C44;
+  }
+
+  .services__card--capacitaciones h3,
+  .services__card--capacitaciones p,
+  .services__grid .services__card:last-child h3,
+  .services__grid .services__card:last-child p {
+    color: var(--azul-azul);
+  }
+
+  .services__link {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+    gap: 1.5rem; /* 24px */
+  }
+
+  .services__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem; /* 6px */
+  margin-top: 2rem; /* 32px */
+  width: 100%;
+}
+
+.services__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: #E2E4E5; /* gris-200 */
+}
+
+.services__dot--active {
+  background-color: #A1A4A7; /* gris-gris */
+}
+
+/* ---------- Quién está detrás de PREVITALIA ---------- */
+  .who-we-are {
+  flex-direction: column-reverse;
+  gap: 2rem;
+  padding: 5rem 1rem;
+}
+
+  .who-we-are__photo {
+    width: 100%;
+    height: 15rem; /* 240px, un alto razonable en mobile — dime si tu Figma tiene otro valor */
+  }
+
+  .who-we-are__content {
+    width: 100%;
+    gap: 2rem; /* 32px */
+  }
+
+  .who-we-are__title {
+    font-size: 2rem;          /* 32px */
+    line-height: 2.5rem;      /* 40px */
+    letter-spacing: -0.04rem; /* -0.64px */
+    white-space: normal; 
+  }
+
+  .who-we-are__card {
+  padding: 2.5rem 1rem; /* 40px 16px */
+  gap: 2rem; /* 32px */
+  height: 48.625rem; /* 778px */
+}
+
+  .who-we-are__text {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  .who-we-are__checklist-intro {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  .who-we-are__check-item span {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  .who-we-are__quote p {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  /* ---------- Sectores donde trabajamos ---------- */
+  .sectors {
+    padding: 5rem 1rem; /* 80px 16px */
+    gap: 0;
+  }
+
+  .sectors__intro {
+    margin-bottom: 2rem; /* 32px, hacia la grilla */
+  }
+
+  .sectors__intro h2 {
+    font-size: 2rem;          /* 32px */
+    line-height: 2.5rem;      /* 40px */
+    letter-spacing: -0.04rem; /* -0.64px */
+  }
+
+  .sectors__intro p {
+    font-size: 1rem;     /* 16px */
+    line-height: 1.5rem; /* 24px */
+    color: var(--gris-500);
+  }
+
+  .sectors__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 9.125rem); /* 2 columnas de 146px */
+    justify-content: center;
+    column-gap: 1rem; /* 16px */
+    row-gap: 2rem;     /* 32px */
+    max-width: 100%;
+  }
+
+  .sectors__item p {
+    font-size: 0.875rem;  /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  /* ---------- Clientes y testimonios (carrusel horizontal) ---------- */
+  .testimonials {
+    padding: 5rem 1rem; /* 80px 16px */
+    gap: 2rem;          /* 32px, en vez de 2.25rem */
+  }
+
+  .testimonials__intro h2 {
+    font-size: 2rem;          /* 32px */
+    line-height: 2.5rem;      /* 40px */
+    letter-spacing: -0.04rem; /* -0.64px */
+  }
+
+  .testimonials__intro p {
+    font-size: 1rem;     /* 16px, antes 1.25rem */
+    line-height: 1.5rem; /* 24px, antes 1.75rem */
+  }
+
+  .testimonials__track {
+    gap: 1rem; 
+  }
+
+  .testimonials__card {
+    width: 16.25rem; /* 260px */
+  }
+
+  .testimonials__grid {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .testimonials__grid {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: calc(100% + 2rem);
+  }
+
+  /* ---------- Contacto ---------- */
+
+  .contact__input,
+  .contact__textarea {
+    font-size: 0.875rem;  
+    line-height: 1.25rem; 
+  }
+
+  .contact {
+    flex-direction: column;
+    padding: 5rem 1rem; /* 80px 16px */
+    gap: 2rem;          /* 32px */
+  }
+
+  .contact__info {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact__intro {
+    gap: 0.75rem; /* 12px, antes 1rem */
+  }
+
+  .contact__intro h2 {
+    font-size: 2rem;          /* 32px */
+    line-height: 2.5rem;      /* 40px */
+    letter-spacing: -0.04rem; /* -0.64px */
+  }
+
+  .contact__intro p {
+    font-size: 1rem;     /* 16px, */
+    line-height: 1.5rem; /* 24px */
+  }
+
+  .contact__card {
+    height: 18.0625rem; /* 289px */
+    gap: 1rem;           /* 16px */
+  }
+
+  .contact__form-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact__form-title {
+    font-size: 2rem;          /* 32px */
+    line-height: 2.5rem;      /* 40px */
+    letter-spacing: -0.04rem; /* -0.64px */
+  }
+
+  .contact__form-row {
+    flex-direction: column; /* los 4 inputs se apilan */
+  }
+  
+  /* ---------- Footer ---------- */
+  .footer {
+    padding: 5rem 1rem; /* 80px 16px */
+    gap: 0.75rem;        /* 12px, entre el bloque superior y el bloque inferior */
+  }
+
+  .footer__top {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* 32px, entre el logo y las columnas */
+  }
+
+  .footer__logo {
+    width: 22.5rem; 
+  }
+
+  .footer__tagline {
+    display: none; /* en el Figma mobile no existe, solo aparece el logo */
+  }
+
+  .footer__divider {
+    display: none; 
+  }
+
+  .footer__columns {
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2.25rem; /* 36px, entre Navegación y Servicios */
+    row-gap: 2rem;        /* 32px, antes de bajar a la fila de Contáctanos */
+    width: 100%;
+  }
+
+  .footer__col {
+    gap: 0.5rem;      /* 8px, entre el título y la lista */
+    text-align: center; 
+  }
+
+  .footer__col-list {
+    align-items: center;
+  }
+
+  .footer__col--contact {
+    flex-basis: 100%; 
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* reemplaza el <hr> real */
+    padding-top: 2rem; 
+  }
+
+  .footer__col--contact .footer__col-title {
+    display: none; /* en mobile no aparece el título "Contáctanos" */
+  }
+
+  .footer__contact-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, auto);
+    column-gap: 1.875rem; /* 30px */
+    row-gap: 0;
+  }
+
+  .footer__contact-list > :nth-child(1) { order: 3; } /* item Email */
+  .footer__contact-list > :nth-child(2) { order: 4; } /* valor Email */
+  .footer__contact-list > :nth-child(3) { order: 1; } /* item WhatsApp */
+  .footer__contact-list > :nth-child(4) { order: 2; } /* valor WhatsApp */
+
+  .footer__contact-item {
+    justify-content: center;
+  }
+
+  .footer__contact-value {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .footer__bottom {
+    flex-wrap: wrap;
+    row-gap: 2rem; /* 32px, entre los links legales y el copyright */
+  }
+
+  .footer__legal-link {
+    font-size: 0.875rem;  /* 14px, antes 1rem */
+    line-height: 1.25rem; /* 20px, antes 1.5rem */
+  }
+
+  .footer__legal-link:first-of-type {
+    order: 2; 
+  }
+
+  .footer__legal-link:last-of-type {
+    order: 1; 
+  }
+
+  .footer__copyright {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+    gap: 0.5rem; /* 8px */
+  }
+
+  .footer__copyright-icon {
+    width: 1rem;  /* 16px */
+    height: 1rem;
+  }
+
+  .footer__copyright span {
+    font-size: 0.875rem;  /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  /* ---------- Header páginas legales (mobile) ---------- */
+  .header--legal {
+    height: 4rem;
+    padding: 0 1.75rem;
+  }
+
+  .header--legal .header__logo {
+    width: 7.9375rem;
+    height: 2.5rem;
+  }
+
+  .header__nav--legal {
+    display: none;
+  }
+
+  .header--legal .header__menu-toggle {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .legal__eyebrow-line {
+    width: 1.5625rem; /* 25px */
+  }
+
+}
+
+  @media (min-width: 641px) and (max-width: 1024px) {
+
+  /* ---------- Header ---------- */
+  .header__right {
+    display: none;
+  }
+
+  .header {
+    padding: 0 2rem; /* 32px, igual que el Hero */
+  }
+
+  .header__menu-toggle {
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-top: 19rem; /* 304px: 64px del header + 240px de espacio */
+    padding-bottom: 12rem;
+    padding-left: 2rem;  /* 32px */
+    padding-right: 2rem; /* 32px */
+    background-position: 80% top;
+  }
+
+  .hero__content {
+    max-width: 38.375rem; /* 614px */
+  }
+
+  .hero__title {
+    font-size: 4rem;         /* 64px */
+    line-height: 5.125rem;   /* 82px */
+    letter-spacing: -0.08rem; /* -1.28px */
+  }
+
+  /* .hero__subtitle no cambia: mismo tamaño que desktop (32px/40) */
+
+  /* ---------- Barra de stats ---------- */
+  .stats {
+    flex-wrap: nowrap;
+    gap: 1rem; /* 16px */
+    max-width: 44rem; /* 704px */
+    margin-left: 2rem;  /* alinea con el margen del Hero, en vez de centrar */
+    margin-right: auto;
+    margin-top: -7.1875rem; 
+    padding: 0;
+  }
+
+  .stats__card {
+    width: 10.25rem;   /* 164px */
+    height: 14.375rem; /* 230px */
+    padding: 0.875rem 2rem;
+    flex-shrink: 0;
+  }
+
+  /* ---------- ¿Qué hacemos? ---------- */
+  .what-we-do {
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem; /* 64px */
+    padding: 6rem 2rem;
+    padding-top: 5rem; /* 80px */
+    padding-bottom: 5rem; /* 80px */
+  }
+
+  .what-we-do__text {
+    width: 100%;
+    max-width: 44rem; /* 704px */
+  }
+
+  .checklist {
+    gap: 1rem; /* 16px */
+  }
+
+  /* .what-we-do__graphic, .shape--navy, .shape--photo, .shape--teal-top,
+     .shape--teal-bottom y .checklist__item no cambian: mismas medidas que desktop */
+
+     /* ---------- Por qué elegir PREVITALIA ---------- */
+  .why-us {
+    padding-top: 5rem;    /* 80px */
+    padding-bottom: 5rem; /* 80px */
+    padding-left: 2rem;   /* 32px */
+    padding-right: 2rem;  /* 32px */
+  }
+
+  .why-us__subtitle {
+  text-align: center;
+}
+
+  .why-us__cards {
+  flex-direction: column;
+  align-items: center;   /* centra las tarjetas de 524px */
+  gap: 1rem;
+}
+
+  .why-us__card {
+  width: 32.75rem;  /* 524px */
+  flex: none;
+}
+  /* .why-us__card, .why-us__icon, .why-us__desc, .why-us__subtitle
+     no cambian: mismas medidas que desktop */
+
+     /* ---------- Servicios destacados ---------- */
+  .services {
+    padding: 5rem 2rem; /* 80px / 32px */
+    gap: 2rem; /* 32px */
+  }
+
+  .services__grid--mobile-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  width: 100vw;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  align-self: flex-start; 
+   scroll-padding-left: 2rem; 
+}
+
+  .services__grid--mobile-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services__card {
+    flex: none;
+    width: 27.125rem; /* 434px */
+    height: auto;
+    scroll-snap-align: start;
+  }
+
+  .services__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.375rem; /* 6px */
+    margin-top: 2rem; /* 32px */
+    width: 100%;
+  }
+
+  .services__dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: #E2E4E5;
+  }
+
+  .services__dot--active {
+    background-color: #A1A4A7;
+  }
+
+  /* ---------- Quién está detrás de PREVITALIA ---------- */
+.who-we-are {
+  flex-direction: column-reverse; 
+  align-items: center;
+  gap: 5rem;            /* 80px */
+  padding-top: 5rem;    /* 80px */
+  padding-bottom: 5rem; /* 80px */
+  padding-left: 2rem;   /* 32px */
+  padding-right: 2rem;  /* 32px */
+}
+
+.who-we-are__photo {
+  width: 32.6875rem;  /* 523px */
+  height: 42.3125rem; /* 677px */
+}
+
+.who-we-are__content {
+  max-width: none;
+  width: 100%;
+}
+
+.who-we-are__title {
+  white-space: normal; 
+}
+
+.who-we-are__checklist {
+  height: auto; /* la altura fija de 303px (pensada para desktop) puede recortar texto en tablet */
+}
+
+.who-we-are__quote {
+  margin-top: -1.25rem; /* reduce el gap de 40px a 20px solo para esta card */
+}
+
+/* ---------- Sectores donde trabajamos ---------- */
+.sectors {
+  padding-top: 5rem;    /* 80px */
+  padding-bottom: 5rem; /* 80px */
+  padding-left: 2rem;   /* 32px */
+  padding-right: 2rem;  /* 32px */
+  gap: 2rem;            /* 32px, entre título y grilla */
+}
+
+.sectors__grid {
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 0.75rem; /* 12px */
+  column-gap: 1rem; /* 16px */
+}
+
+.testimonials {
+  padding-top: 5rem;    /* 80px */
+  padding-bottom: 5rem; /* 80px */
+  padding-left: 2rem;   /* 32px */
+  padding-right: 2rem;  /* 32px */
+  gap: 2rem;            /* 32px */
+}
+
+.testimonials__intro {
+  max-width: 43.625rem; /* 698px */
+}
+
+.testimonials__track {
+  gap: 1rem; /
+}
+
+/* ---------- Contacto ---------- */
+.contact {
+  flex-direction: column;
+  padding-top: 5rem;    /* 80px */
+  padding-bottom: 5rem; /* 80px */
+  padding-left: 2rem;   /* 32px */
+  padding-right: 2rem;  /* 32px */
+  gap: 2rem;            /* 32px */
+}
+
+.contact__info {
+  width: 100%;
+  height: auto;
+}
+
+.contact__intro {
+  gap: 0.75rem; /* 12px, antes 1rem */
+}
+
+.contact__card {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  gap: 0;
+}
+
+.contact__row {
+  gap: 1rem; /* 16px */
+}
+
+.contact__text {
+  width: auto; 
+}
+
+.contact__form-card {
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding-left: 2rem;  /* 32px */
+  padding-right: 2rem; /* 32px */
+  padding-top: 5rem;    /* 80px */
+  padding-bottom: 5rem; /* 80px */
+}
+
+.footer__top {
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* 32px, entre el logo y las columnas */
+}
+
+.footer__tagline {
+  display: none; 
+}
+
+.footer__columns {
+  flex: none;
+  width: 100%;
+}
+
+.footer__bottom {
+  flex-wrap: wrap;
+  row-gap: 2rem; /* 32px */
+}
+
+.footer__legal-link:first-of-type {
+  order: 1;
+}
+
+.footer__legal-link:last-of-type {
+  order: 2;
+}
+
+.footer__copyright {
+  order: 3;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem; /* 8px */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  padding: 0.75rem 1.75rem 1rem 1.75rem; /* 12px 28px 16px 28px */
+  background: linear-gradient(to right, var(--azul-azul), var(--azul-500));
+  z-index: 100;
+  transition: height 0.33s ease-in-out;
+}
+
+.mobile-menu.is-open {
+  display: flex;
+  height: 18.5625rem;
+}
+
+.mobile-menu__logo {
+  position: absolute;
+  top: 1.0625rem;  /* 17px: header de 64px - logo de 46.6px, alineado abajo igual que el header */
+  left: 2rem;      /* 32px, mismo padding-left del header */
+  width: 9.25rem;
+  height: auto;
+}
+
+.mobile-menu__close {
+  position: absolute;
+  top: 1.5rem;     /* 24px: header de 64px - botón de 40px, alineado abajo igual que el header */
+  right: 2rem;     /* 32px, mismo padding-right del header */
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu__nav {
+  position: absolute;
+  top: 6.1875rem; /* ~99px */
+  left: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-menu__nav a {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--blanco);
+}
+
+/* ---------- Header páginas legales (tablet) ---------- */
+.header--legal {
+  padding: 0 2rem; /* 32px */
+}
+
+.header--legal.header--scrolled {
+  background: rgba(248, 247, 246, 0.9); /* sand-100 al 80% */
+}
+
+.header__nav--legal {
+  display: none;
+}
+
+.header--legal .header__menu-toggle {
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.header--legal.header--hidden {
+  transform: translateY(-100%);
+}
+
+/* ---------- Contenido página legal ---------- */
+.legal {
+  padding-top: 9rem;    /* 144px*/
+  padding-bottom: 5rem; /* 80px */
+  padding-left: 2rem;   /* 32px */
+  padding-right: 2rem;  /* 32px */
+}
+
+.mobile-menu--legal .mobile-menu__logo {
+  top: 0.5625rem; /* 9px: header centrado, (64px - 46.6px) / 2 */
+}
+
+.mobile-menu--legal .mobile-menu__close {
+  top: 0.75rem; /* 12px: (64px - 40px) / 2 */
+}
+
+}

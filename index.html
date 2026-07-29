@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PREVITALIA | Riesgos bajo control, personas al centro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;700&family=Michroma&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="page">
+
+<!-- ============ HERO (incluye el Header dentro) ============ -->
+  <section id="inicio" class="hero">
+
+    <!-- Header -->
+    <header class="header">
+      <img src="img/logo-blanco.svg" alt="PREVITALIA" class="header__logo">
+
+      <!-- Botón hamburguesa: solo visible en mobile -->
+      <button class="header__menu-toggle" aria-label="Abrir menú">
+        <img src="img/icon-menu.svg" alt="">
+      </button>
+
+      <div class="header__right">
+        <nav class="header__nav">
+          <a href="#inicio">Inicio</a>
+          <a href="#que-hacemos">Qué hacemos</a>
+          <a href="#servicios">Destacados</a>
+          <a href="#quienes-somos">Quienes somos</a>
+          <a href="#testimonios">Testimonios</a>
+        </nav>
+        <a href="#contacto" class="btn btn--pill-sm">Contacto</a>
+      </div>
+    </header>
+
+    <!-- Panel del menú mobile (oculto por defecto, se despliega con JS) -->
+    <div class="mobile-menu mobile-menu--legal" id="mobileMenu">
+      <img src="img/logo-blanco.svg" alt="PREVITALIA" class="mobile-menu__logo">
+      <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Cerrar menú">
+        <img src="img/icon-close.svg" alt="">
+      </button>
+      <nav class="mobile-menu__nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#que-hacemos">Qué hacemos</a>
+        <a href="#servicios">Destacados</a>
+        <a href="#quienes-somos">Quienes somos</a>
+        <a href="#testimonios">Testimonios</a>
+      </nav>
+    </div>
+
+    <!-- Contenido del Hero -->
+    <div class="hero__content">
+      <h1 class="hero__title">
+        Riesgos bajo control,<br>
+        <span class="hero__title--accent">personas</span> al centro
+      </h1>
+      <p class="hero__subtitle">
+        Trabajamos con empresas agrícolas, industriales y de construcción en todo Chile.
+      </p>
+      <div class="hero__actions">
+        <a href="#contacto" class="btn btn--primary">
+          Quiero una asesoría
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#servicios" class="btn btn--outline">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BARRA DE STATS (superpuesta entre Hero y la siguiente sección) ============ -->
+  <section class="stats">
+    <div class="stats__card">
+      <div class="stats__icon">
+        <img src="img/icon-experiencia.svg" alt="">
+      </div>
+     <p class="stats__number" data-count="30" data-suffix=" +">30 +</p>
+      <p class="stats__label">Años de<br>experiencia</p>
+    </div>
+
+    <div class="stats__card">
+      <div class="stats__icon">
+        <img src="img/icon-sectores.svg" alt="">
+      </div>
+      <p class="stats__number" data-count="4">4</p>
+      <p class="stats__label">Sectores<br>atendidos</p>
+    </div>
+
+    <div class="stats__card stats__card--iso">
+      <div class="stats__icon">
+        <img src="img/icon-certificado.svg" alt="">
+      </div>
+      <p class="stats__number">ISO</p>
+      <p class="stats__label stats__label--split">
+        <span class="stats__label-bold">45001</span>
+        Certificación
+      </p>
+    </div>
+
+    <div class="stats__card">
+      <div class="stats__icon">
+        <img src="img/icon-empresas.svg" alt="">
+      </div>
+      <p class="stats__number" data-count="50" data-suffix=" +">50 +</p>
+     <p class="stats__label">Empresas<br>asesoradas</p>
+    </div>
+  </section>
+   <!-- ============ ¿QUÉ HACEMOS? ============ -->
+  <section id="que-hacemos" class="what-we-do">
+    <div class="what-we-do__text">
+      <div class="what-we-do__intro">
+        <h2>¿Qué hacemos?</h2>
+        <p>Acompañamos a tu empresa en todo el ciclo de la <strong>gestión preventiva</strong>: desde el diagnóstico y la identificación de peligros, hasta la implementación de programas, capacitaciones y la mejora continua del sistema.”</p>
+      </div>
+
+      <ul class="checklist">
+        <li class="checklist__item">
+          <img src="img/icon-checkmark.svg" alt="" class="checklist__icon">
+          <span>Implementación y actualización de DS 44</span>
+        </li>
+        <li class="checklist__item">
+          <img src="img/icon-checkmark.svg" alt="" class="checklist__icon">
+          <span>Interpretación de ISO 45001 a la realidad operativa</span>
+        </li>
+        <li class="checklist__item">
+          <img src="img/icon-checkmark.svg" alt="" class="checklist__icon">
+          <span>Protocolos psicosociales y Ley Karin</span>
+        </li>
+        <li class="checklist__item">
+          <img src="img/icon-checkmark.svg" alt="" class="checklist__icon">
+          <span>Matrices de riesgo (MIPER) y programas de control</span>
+        </li>
+        <li class="checklist__item">
+          <img src="img/icon-checkmark.svg" alt="" class="checklist__icon">
+          <span>Capacitaciones de todo tipo</span>
+        </li>
+        <li class="checklist__item">
+          <img src="img/icon-checkmark.svg" alt="" class="checklist__icon">
+          <span>Apoyo en fiscalizaciones y auditorías</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="what-we-do__graphic">
+      <div class="shape shape--navy"></div>
+      <div class="shape shape--photo"></div>
+      <div class="shape shape--teal-top"></div>
+      <div class="shape shape--teal-bottom"></div>
+    </div>
+  </section>
+
+  <!-- ============ POR QUÉ ELEGIR PREVITALIA ============ -->
+  <section class="why-us">
+    <h2 class="why-us__title">
+      <span class="why-us__title--muted">Por qué elegir</span>
+      <span class="why-us__title--accent">PREVITALIA</span>
+    </h2>
+<p class="why-us__subtitle">Más de 30 años de experiencia transformando la prevención de riesgos en Chile</p>
+    <div class="why-us__cards">
+      <div class="why-us__card">
+        <div class="why-us__icon">
+          <img src="img/icon-experiencia-real.svg" alt="">
+        </div>
+        <h3>Experiencia real en terreno</h3>
+        <div class="why-us__desc">
+          <p>Más de 30 años trabajando con empresas agrícolas, industriales y de construcción en Chile.</p>
+          <p>Conocemos la realidad de cada sector.</p>
+        </div>
+      </div>
+
+      <div class="why-us__card why-us__card--lenguaje">
+        <div class="why-us__icon">
+          <img src="img/icon-lenguaje-claro.svg" alt="">
+        </div>
+        <h3>Lenguaje claro y aplicado</h3>
+        <div class="why-us__desc">
+          <p>Traducimos la normativa a procedimientos simples y comprensibles para todos los trabajadores, sin tecnicismos innecesarios.</p>
+          <p>Porque entender las normas es el primer paso para cumplirlas.</p>
+        </div>
+      </div>
+
+      <div class="why-us__card">
+        <div class="why-us__icon">
+          <img src="img/icon-enfoque-personas.svg" alt="">
+        </div>
+        <h3>Enfoque en personas</h3>
+        <div class="why-us__desc">
+          <p>La prevención no es solo documentos: es cultura, hábitos, respeto y buen trato.</p>
+          <p>Porque detrás de cada norma, hay una persona.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- ============ SERVICIOS DESTACADOS ============ -->
+  <section id="servicios" class="services">
+    <div class="services__intro">
+      <h2>Servicios destacados</h2>
+      <p>Soluciones integrales para la gestión de seguridad y salud en el trabajo.</p>
+    </div>
+
+    <div class="services__grid services__grid--mobile-scroll">
+      <div class="services__card">
+        <div class="services__icon">
+          <img src="img/icon-ds44.svg" alt="">
+        </div>
+        <h3>Implementación DS 44 y actualización de RIOHS</h3>
+        <p>Te acompañamos a adaptar tu Reglamento interno y tus procesos al nuevo DS 44, integrando la gestión preventiva en todos los niveles de tu organización.</p>
+        <a href="#contacto" class="services__link">
+          Solicitar información
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="services__card">
+        <div class="services__icon">
+          <img src="img/icon-ley-karin.svg" alt="">
+        </div>
+        <h3>Ley Karin y riesgos psicosociales</h3>
+        <p>Diseñamos políticas, procedimientos de denuncia e investigación, capacitaciones y matrices psicosociales, con foco en el buen trato y el respeto.</p>
+        <a href="#contacto" class="services__link">
+          Solicitar información
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="services__card services__card--capacitaciones">
+        <div class="services__icon">
+          <img src="img/icon-capacitaciones.svg" alt="">
+        </div>
+        <h3>Capacitaciones prácticas y a tu medida</h3>
+        <p>Cursos breves, claros y aterrizados: incendios, manejo de plaguicidas, TMERT, VOTME, trabajo en altura, convivencia laboral, entre otros.</p>
+        <a href="#contacto" class="services__link">
+          Solicitar información
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="services__card">
+        <div class="services__icon">
+          <img src="img/icon-auditorias.svg" alt="">
+        </div>
+        <h3>Apoyo en auditorías y fiscalizaciones</h3>
+        <p>Preparamos la documentación, organizamos la evidencia y te apoyamos antes, durante y después de las visitas de la DT, seremi u organismos administradores.</p>
+        <a href="#contacto" class="services__link">
+          Solicitar información
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="services__dots">
+      <span class="services__dot services__dot--active"></span>
+      <span class="services__dot"></span>
+      <span class="services__dot"></span>
+      <span class="services__dot"></span>
+    </div>
+  </section>
+
+  <!-- ============ QUIÉN ESTÁ DETRÁS DE PREVITALIA ============ -->
+  <section id="quienes-somos" class="who-we-are">
+
+    <!-- Espacio reservado para la foto de Rodrigo (pendiente) -->
+    <div class="who-we-are__photo">
+      <!-- <img src="img/rodrigo-allende.jpg" alt="Rodrigo Allende Podestà"> -->
+    </div>
+
+    <div class="who-we-are__content">
+      <h2 class="who-we-are__title">
+        Quién está detrás de
+        <span class="who-we-are__title--accent">PREVITALIA</span>
+      </h2>
+
+      <div class="who-we-are__card">
+       <p class="who-we-are__text">
+  PREVITALIA nace de la experiencia de <strong>más de 30 años</strong> en prevención de riesgos, gestión de seguridad y salud en el trabajo en distintos sectores: agrícola, industrial, construcción y servicios.
+  <br><br>
+  Su fundador, <strong>Rodrigo Allende Podestà</strong>, es Ingeniero en Prevención de Riesgos y Medio Ambiente, MBA y coach ontológico, con amplia experiencia asesorando empresas en Chile en la implementación de sistemas de gestión basados en ISO 45001, DS 44, Ley 16.744 y la Ley Karin.
+</p>
+
+        <div class="who-we-are__checklist">
+          <p class="who-we-are__checklist-intro">El foco de PREVITALIA es simple:</p>
+          <div class="who-we-are__check-item">
+            <img src="img/icon-checkmark.svg" alt="" class="who-we-are__check-icon">
+            <span>Implementación y actualización de DS 44</span>
+          </div>
+          <div class="who-we-are__check-item">
+            <img src="img/icon-checkmark.svg" alt="" class="who-we-are__check-icon">
+            <span>Ayudar a las empresas a cumplir la normativa sin burocracia innecesaria</span>
+          </div>
+          <div class="who-we-are__check-item">
+            <img src="img/icon-checkmark.svg" alt="" class="who-we-are__check-icon">
+            <span>Construir culturas preventivas sostenibles con respeto, buen trato y participación</span>
+          </div>
+        </div>
+
+        <div class="who-we-are__quote">
+         <p>“Creemos en una prevención cercana, que escucha, conversa y construye junto a las personas que<br>hacen la empresa día a día”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTORES DONDE TRABAJAMOS ============ -->
+  <section id="sectores" class="sectors">
+    <div class="sectors__intro">
+      <h2>Sectores donde trabajamos</h2>
+      <p>Conocemos la realidad de distintos rubros y adaptamos la prevención a cada uno</p>
+    </div>
+
+    <div class="sectors__grid">
+      <div class="sectors__item">
+        <div class="sectors__icon">
+          <img src="img/icon-agricola.svg" alt="">
+        </div>
+        <p>Agrícola</p>
+      </div>
+
+      <div class="sectors__item">
+        <div class="sectors__icon">
+          <img src="img/icon-construccion.svg" alt="">
+        </div>
+        <p>Construcción</p>
+      </div>
+
+      <div class="sectors__item">
+        <div class="sectors__icon">
+          <img src="img/icon-industria.svg" alt="">
+        </div>
+        <p>Industria</p>
+      </div>
+
+      <div class="sectors__item">
+        <div class="sectors__icon">
+          <img src="img/icon-servicios.svg" alt="">
+        </div>
+        <p>Servicios</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTES Y TESTIMONIOS ============ -->
+  <section id="testimonios" class="testimonials">
+    <div class="testimonials__intro">
+      <h2>
+        Clientes y <span class="testimonials__title--accent">testimonios</span>
+      </h2>
+      <p>
+        Hemos <span class="testimonials__subtitle--accent">apoyado a empresas</span> agrícolas, de construcción e industria alimentaria en distintas regiones del país,<br>
+        acompañándolas en auditorías, fiscalizaciones e implementación de mejoras preventivas.
+      </p>
+    </div>
+
+    <div class="testimonials__grid">
+      <div class="testimonials__card">
+        <p class="testimonials__quote">“El apoyo de PREVITALIA fue fundamental para implementar nuestro sistema de gestión: Su enfoque práctico y cercano nos ayudó a cumplir con la normativa sin perder el foco en nuestras personas.”</p>
+        <hr class="testimonials__divider">
+        <div class="testimonials__author">
+          <p class="testimonials__author-name">Gerente General</p>
+          <p class="testimonials__author-company">Empresa Agrícola</p>
+        </div>
+      </div>
+
+      <div class="testimonials__card">
+        <p class="testimonials__quote">"El apoyo de PREVITALIA fue fundamental para implementar nuestro sistema de gestión: Su enfoque práctico y cercano nos ayudó a cumplir con la normativa sin perder el foco en nuestras personas."</p>
+        <hr class="testimonials__divider">
+        <div class="testimonials__author">
+          <p class="testimonials__author-name">Gerente General</p>
+          <p class="testimonials__author-company">Empresa Agrícola</p>
+        </div>
+      </div>
+
+      <div class="testimonials__card">
+        <p class="testimonials__quote">"El apoyo de PREVITALIA fue fundamental para implementar nuestro sistema de gestión: Su enfoque práctico y cercano nos ayudó a cumplir con la normativa sin perder el foco en nuestras personas."</p>
+        <hr class="testimonials__divider">
+        <div class="testimonials__author">
+          <p class="testimonials__author-name">Gerente General</p>
+          <p class="testimonials__author-company">Empresa Agrícola</p>
+        </div>
+      </div>
+
+      <div class="testimonials__card">
+        <p class="testimonials__quote">“El apoyo de PREVITALIA fue fundamental para implementar nuestro sistema de gestión: Su enfoque práctico y cercano nos ayudó a cumplir con la normativa sin perder el foco en nuestras personas.”</p>
+        <hr class="testimonials__divider">
+        <div class="testimonials__author">
+          <p class="testimonials__author-name">Gerente General</p>
+          <p class="testimonials__author-company">Empresa Agrícola</p>
+        </div>
+      </div>
+
+      <div class="testimonials__card">
+        <p class="testimonials__quote">“El apoyo de PREVITALIA fue fundamental para implementar nuestro sistema de gestión: Su enfoque práctico y cercano nos ayudó a cumplir con la normativa sin perder el foco en nuestras personas.”</p>
+        <hr class="testimonials__divider">
+        <div class="testimonials__author">
+          <p class="testimonials__author-name">Gerente General</p>
+          <p class="testimonials__author-company">Empresa Agrícola</p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials__dots">
+      <span class="testimonials__dot testimonials__dot--active"></span>
+      <span class="testimonials__dot"></span>
+      <span class="testimonials__dot"></span>
+      <span class="testimonials__dot"></span>
+      <span class="testimonials__dot"></span>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="contacto" class="contact">
+      <div class="contact__info">
+      <div class="contact__intro">
+        <h2>Contáctanos</h2>
+        <p>Cuéntanos brevemente la situación de tu empresa y te contactaremos pata revisar juntos la mejor forma de apoyarte</p>
+      </div>
+
+      <div class="contact__card">
+        <div class="contact__row">
+          <div class="contact__icon">
+            <img src="img/icon-email.svg" alt="">
+          </div>
+          <div class="contact__text">
+            <p class="contact__label">Email</p>
+            <p class="contact__value">contacto@previtalia.cl</p>
+          </div>
+        </div>
+
+        <div class="contact__row">
+          <div class="contact__icon">
+            <img src="img/icon-whatsapp.svg" alt="">
+          </div>
+          <div class="contact__text">
+            <p class="contact__label">WhatsApp</p>
+            <p class="contact__value">+569 1234 5678</p>
+          </div>
+        </div>
+
+        <div class="contact__row">
+          <div class="contact__icon">
+            <img src="img/icon-ubicacion.svg" alt="">
+          </div>
+          <div class="contact__text">
+            <p class="contact__label">Ubicación</p>
+            <p class="contact__value">Quillota, Chile</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact__form-card">
+      <h2 class="contact__form-title">
+        Prepárate y <span class="contact__form-title--accent">previene</span><br>con nosotros
+      </h2>
+
+     <form class="contact__form" id="contactForm">
+  <div class="contact__form-row">
+    <div class="contact__form-col">
+      <div class="contact__field">
+        <label class="contact__form-label">Nombre completo *</label>
+        <input type="text" name="name" class="contact__input" required>
+      </div>
+      <div class="contact__field">
+        <label class="contact__form-label">Correo *</label>
+        <input type="email" name="email" class="contact__input" required>
+      </div>
+    </div>
+    <div class="contact__form-col">
+      <div class="contact__field">
+        <label class="contact__form-label">Empresa</label>
+        <input type="text" name="company" class="contact__input">
+      </div>
+      <div class="contact__field">
+        <label class="contact__form-label">Teléfono</label>
+        <input type="tel" name="phone" class="contact__input">
+      </div>
+    </div>
+  </div>
+
+  <div class="contact__field">
+    <label class="contact__form-label">Cuéntanos qué necesitas *</label>
+    <textarea name="message" class="contact__textarea" required></textarea>
+  </div>
+
+  <button type="submit" class="contact__submit">Quiero una asesoría</button>
+</form>
+    </div>
+  </section>
+
+   <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="img/logo-completo.svg" alt="PREVITALIA" class="footer__logo">
+        <p class="footer__tagline">Más de 30 años acompañando a empresas agrícolas, industriales y de construcción en Chile a implementar una gestión preventiva real.</p>
+      </div>
+
+      <div class="footer__columns">
+        <div class="footer__col">
+          <p class="footer__col-title">Navegación</p>
+          <nav class="footer__col-list">
+  <li><a href="#"><span>Inicio</span></a></li>
+  <li><a href="#"><span>Quiénes somos</span></a></li>
+  <li><a href="#"><span>Servicios</span></a></li>
+  <li><a href="#"><span>Sectores</span></a></li>
+  <li><a href="#"><span>Testimonios</span></a></li>
+  <li><a href="#"><span>Contacto</span></a></li>
+          </nav>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__col-title">Servicios</p>
+          <nav class="footer__col-list">
+  <li><a href="#"><span>DS 44 y RIOHS</span></a></li>
+  <li><a href="#"><span>Ley Karin</span></a></li>
+  <li><a href="#"><span>Capacitaciones</span></a></li>
+  <li><a href="#"><span>Auditorías y fiscalizaciones</span></a></li>
+  <li><a href="#"><span>ISO 45001</span></a></li>
+          </nav>
+        </div>
+
+        <div class="footer__col footer__col--contact">
+          <div class="footer__contact-inner">
+            <p class="footer__col-title">Contáctanos</p>
+            <div class="footer__contact-list">
+              <div class="footer__contact-item">
+                <img src="img/icon-email.svg" alt="" class="footer__contact-icon">
+                <span class="footer__contact-label">Email</span>
+              </div>
+              <p class="footer__contact-value">contacto@previtalia.cl</p>
+
+              <div class="footer__contact-item">
+                <img src="img/icon-whatsapp.svg" alt="" class="footer__contact-icon">
+                <span class="footer__contact-label">WhatsApp</span>
+              </div>
+              <p class="footer__contact-value">+569 1234 5678</p>
+
+              <div class="footer__contact-item">
+                <img src="img/icon-ubicacion.svg" alt="" class="footer__contact-icon">
+                <span class="footer__contact-label">Ubicación</span>
+              </div>
+              <p class="footer__contact-value">Chile</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer__divider">
+
+    <div class="footer__bottom">
+      <!-- Estos 2 links irán a páginas propias que aún no diseñamos -->
+      <a href="politica-privacidad.html" class="footer__legal-link">Política de privacidad</a>
+
+      <div class="footer__copyright">
+        <img src="img/icon-copyright.svg" alt="" class="footer__copyright-icon">
+        <span>2026 PREVITALIA. Todos los derechos reservados.</span>
+      </div>
+
+      <a href="terminos-condiciones.html" class="footer__legal-link">Términos y condiciones</a>
+    </div>
+  </footer>
+
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init({ publicKey: "TN1ElNAJPwnQhdr60" });
+</script>
+  <script src="js/script.js"></script>
+</body>
+</html>
