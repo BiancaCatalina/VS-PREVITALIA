@@ -9,6 +9,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;700&family=Michroma&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- Chat Widget -->
+<button id="chatToggle" class="chat-widget__toggle" aria-label="Abrir chat">
+  <svg class="chat-widget__icon-open" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg class="chat-widget__icon-close" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</button>
+
+<div id="chatPanel" class="chat-widget__panel">
+  <div class="chat-widget__header">
+    <div class="chat-widget__avatar">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M4 4h16v12H7l-3 3V4z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="chat-widget__header-text">
+      <span class="chat-widget__title">Previtalia</span>
+      <span class="chat-widget__subtitle">Te respondemos al instante</span>
+    </div>
+    <button id="chatClose" class="chat-widget__close" aria-label="Cerrar chat">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <div id="chatMessages" class="chat-widget__messages">
+    <div class="chat-widget__message chat-widget__message--bot">
+      <p>¡Hola! Soy el asistente virtual de Previtalia. ¿En qué puedo ayudarte hoy?</p>
+    </div>
+  </div>
+
+  <form id="chatForm" class="chat-widget__input-row">
+    <input type="text" id="chatInput" class="chat-widget__input" placeholder="Escribe tu mensaje..." autocomplete="off" required>
+    <button type="submit" class="chat-widget__send" aria-label="Enviar mensaje">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M4 12l16-7-5 7 5 7-16-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </form>
+</div>
+
+
 <body>
 
 <div class="page">

@@ -328,3 +328,77 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
+
+// Chat Widget
+const chatToggle = document.getElementById('chatToggle');
+const chatPanel = document.getElementById('chatPanel');
+const chatClose = document.getElementById('chatClose');
+const chatMessages = document.getElementById('chatMessages');
+const chatForm = document.getElementById('chatForm');
+const chatInput = document.getElementById('chatInput');
+
+function openChat() {
+  chatPanel.classList.add('is-open');
+  chatToggle.classList.add('is-open');
+  chatInput.focus();
+}
+function closeChat() {
+  chatPanel.classList.remove('is-open');
+  chatToggle.classList.remove('is-open');
+}
+chatToggle.addEventListener('click', () => {
+  chatPanel.classList.contains('is-open') ? closeChat() : openChat();
+});
+chatClose.addEventListener('click', closeChat);
+
+function addMessage(text, sender) {
+  const msg = document.createElement('div');
+  msg.className = `chat-widget__message chat-widget__message--${sender}`;
+  const p = document.createElement('p');
+  p.textContent = text;
+  msg.appendChild(p);
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function showTyping() {
+  const typing = document.createElement('div');
+  typing.className = 'chat-widget__message chat-widget__message--bot chat-widget__message--typing';
+  typing.id = 'chatTyping';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  chatMessages.appendChild(typing);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function hideTyping() {
+  const typing = document.getElementById('chatTyping');
+  if (typing) typing.remove();
+}
+
+chatForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const text = chatInput.value.trim();
+  if (!text) return;
+
+  addMessage(text, 'user');
+  chatInput.value = '';
+  chatInput.disabled = true;
+  showTyping();
+
+  try {
+    const res = await fetch('/.netlify/functions/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text })
+    });
+    const data = await res.json();
+    hideTyping();
+    const reply = data.reply || data.message || data.response || 'Lo siento, no pude procesar tu mensaje.';
+    addMessage(reply, 'bot');
+  } catch (err) {
+    hideTyping();
+    addMessage('Hubo un problema de conexión. Intenta nuevamente en unos segundos.', 'bot');
+  } finally {
+    chatInput.disabled = false;
+    chatInput.focus();
+  }
+});
