@@ -1787,8 +1787,8 @@ img {
 
 .chat-widget__icon-open,
 .chat-widget__icon-close {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   color: #fff;
   position: absolute;
   transition: opacity 0.33s ease-in-out, transform 0.33s ease-in-out;
