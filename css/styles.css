@@ -1852,8 +1852,8 @@ img {
 .chat-widget__title { font-size: 0.9375rem; font-weight: 600; line-height: 1.25rem; }
 .chat-widget__subtitle { font-size: 0.75rem; line-height: 1rem; opacity: 0.85; }
 .chat-widget__close {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   background: transparent;
   border: none;
   color: #fff;
