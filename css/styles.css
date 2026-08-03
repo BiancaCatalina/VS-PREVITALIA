@@ -1779,11 +1779,17 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28);
   z-index: 999;
+  transition: transform 0.33s ease-in-out, box-shadow 0.33s ease-in-out;
+}
+.chat-widget__toggle:hover {
+  transform: scale(1.08);
+}
+.chat-widget__toggle:active {
+  transform: scale(0.94);
   transition: transform 0.08s linear;
 }
-.chat-widget__toggle:active { transform: scale(0.94); }
 
 .chat-widget__icon-open,
 .chat-widget__icon-close {
@@ -1951,8 +1957,8 @@ img {
 .chat-widget__send:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .chat-widget__icon-close {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   color: #fff;
 }
 
