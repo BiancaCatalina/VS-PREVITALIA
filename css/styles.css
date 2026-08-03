@@ -1787,12 +1787,10 @@ img {
 
 .chat-widget__icon-open,
 .chat-widget__icon-close {
-  width: 2rem;
-  height: 2rem;
-  color: #fff;
   position: absolute;
   transition: opacity 0.33s ease-in-out, transform 0.33s ease-in-out;
 }
+
 .chat-widget__icon-close { opacity: 0; transform: rotate(-90deg); }
 .chat-widget__toggle.is-open .chat-widget__icon-open { opacity: 0; transform: rotate(90deg); }
 .chat-widget__toggle.is-open .chat-widget__icon-close { opacity: 1; transform: rotate(0deg); }
@@ -1950,9 +1948,15 @@ img {
 .chat-widget__send:active { transform: scale(0.92); }
 .chat-widget__send:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.chat-widget__icon-open {
+.chat-widget__icon-close {
   width: 1.5rem;
   height: 1.5rem;
+  color: #fff;
+}
+
+.chat-widget__icon-open {
+  width: 2rem;
+  height: 2rem;
 }
 .chat-widget__avatar-icon {
   width: 1.25rem;
