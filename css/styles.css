@@ -777,9 +777,24 @@ img {
 .who-we-are {
   position: relative;
   background: #fff;
-  max-width: 1440px;
-  margin: 0 auto;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   padding: 6rem 4rem;
+}
+
+.who-we-are__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 82rem;
+  margin: 0 auto;
 }
 
 .who-we-are__photo {
@@ -795,16 +810,6 @@ img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.who-we-are__content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
 }
 
 .who-we-are__title {
