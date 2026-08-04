@@ -777,11 +777,8 @@ img {
 .who-we-are {
   position: relative;
   background: #fff;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 6rem 4rem;
 }
 
