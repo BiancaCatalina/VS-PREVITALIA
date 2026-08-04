@@ -1995,6 +1995,10 @@ img {
   }
 }
 
+.who-we-are__text--mobile {
+  display: none;
+}
+
 /* ==========================================================================
    RESPONSIVE — MOBILE (hasta 640px)
    ========================================================================== */
@@ -2454,7 +2458,7 @@ img {
     width: 19.375rem;
     height: 19.375rem;
     border-radius: 50%;
-    background: var(--roca-100);
+    background: var(--sand-100);
   }
   .who-we-are__mobile-photo-crop {
     position: absolute;
@@ -2467,11 +2471,15 @@ img {
     overflow: hidden;
   }
   .who-we-are__mobile-photo-crop img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.who-we-are__bio {
+  text-align: center;
+}
 
   .who-we-are__bio-name {
     font-weight: 500;
@@ -2517,6 +2525,14 @@ img {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
+
+  .who-we-are__text--desktop {
+  display: none;
+}
+.who-we-are__text--mobile {
+  display: block;
+}
+
 }
 
   /* ---------- Sectores donde trabajamos ---------- */
