@@ -3041,6 +3041,13 @@ img {
   }
 }
 
+.who-we-are__mobile-photo {
+  display: none;
+}
+.who-we-are__quote--mobile {
+  display: none;
+}
+
 /* ---------- Sectores donde trabajamos ---------- */
 .sectors {
   padding-top: 5rem;    /* 80px */
