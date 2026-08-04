@@ -1999,6 +1999,14 @@ img {
   display: none;
 }
 
+.who-we-are__mobile-photo {
+  display: none;
+}
+
+.who-we-are__quote--mobile {
+  display: none;
+}
+
 /* ==========================================================================
    RESPONSIVE — MOBILE (hasta 640px)
    ========================================================================== */
@@ -3041,12 +3049,6 @@ img {
   }
 }
 
-.who-we-are__mobile-photo {
-  display: none;
-}
-.who-we-are__quote--mobile {
-  display: none;
-}
 
 /* ---------- Sectores donde trabajamos ---------- */
 .sectors {
