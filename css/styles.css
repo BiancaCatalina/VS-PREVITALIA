@@ -2413,54 +2413,111 @@ img {
 }
 
 /* ---------- Quién está detrás de PREVITALIA ---------- */
+  @media (max-width: 640px) {
   .who-we-are {
-  flex-direction: column-reverse;
-  gap: 2rem;
-  padding: 5rem 1rem;
-}
-
-  .who-we-are__photo {
-    width: 100%;
-    height: 15rem; /* 240px, un alto razonable en mobile — dime si tu Figma tiene otro valor */
+    padding: 5rem 1rem;
   }
-
   .who-we-are__content {
-    width: 100%;
-    gap: 2rem; /* 32px */
+    max-width: 100%;
+  }
+  .who-we-are__title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: -0.04rem;
   }
 
-  .who-we-are__title {
-    font-size: 2rem;          /* 32px */
-    line-height: 2.5rem;      /* 40px */
-    letter-spacing: -0.04rem; /* -0.64px */
-    white-space: normal; 
+  /* Ocultar el tratamiento de desktop */
+  .who-we-are__photo,
+  .who-we-are__card > .who-we-are__quote {
+    display: none;
+  }
+
+  /* Mostrar el tratamiento de mobile */
+  .who-we-are__mobile-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+  .who-we-are__mobile-photo-circle {
+    position: relative;
+    width: 19.375rem;
+    height: 19.5625rem;
+    margin: 0 auto;
+  }
+  .who-we-are__mobile-photo-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 19.375rem;
+    height: 19.375rem;
+    border-radius: 50%;
+    background: var(--roca-100);
+  }
+  .who-we-are__mobile-photo-crop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 17.875rem;
+    height: 19.5625rem;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .who-we-are__mobile-photo-crop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .who-we-are__bio-name {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: var(--azul-azul);
+  }
+  .who-we-are__bio-role {
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #3a6b8e;
+    white-space: nowrap;
+  }
+  .who-we-are__bio-credentials {
+    font-weight: 300;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: #424446;
   }
 
   .who-we-are__card {
-  padding: 2.5rem 1rem; /* 40px 16px */
-  gap: 2rem; /* 32px */
-  height: 48.625rem; /* 778px */
-}
-
+    gap: 2rem;
+  }
   .who-we-are__text {
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
-
-  .who-we-are__checklist-intro {
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */
-  }
-
+  .who-we-are__checklist-intro,
   .who-we-are__check-item span {
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
-  .who-we-are__quote p {
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */
+  .who-we-are__quote--mobile {
+    display: block;
+    margin-top: 0;
+    padding: 1.5rem;
   }
+  .who-we-are__quote--mobile p {
+    text-align: center;
+    max-width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
 
   /* ---------- Sectores donde trabajamos ---------- */
   .sectors {
