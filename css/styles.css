@@ -895,7 +895,7 @@ img {
   font-size: 1rem;
   line-height: 1.5rem;
   color: var(--azul-azul);
-  text-align: left;
+  text-align: center;
   max-width: 58rem;
   margin: 0;
 }
@@ -2996,6 +2996,7 @@ img {
     background: #F8F7F6;
   }
   .who-we-are__mobile-photo-crop {
+    display: flex;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -3004,13 +3005,16 @@ img {
     height: 23.9375rem;
     border-radius: 50%;
     overflow: hidden;
+    align-items: center;
+    justify-content: center;
   }
-  .who-we-are__mobile-photo-crop img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-  }
+
+.who-we-are__mobile-photo-crop img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  object-position: center;
+}
 
   .who-we-are__bio {
     text-align: center;
@@ -3047,6 +3051,8 @@ img {
   .who-we-are__text--mobile {
     display: block;
   }
+
+  
 }
 
 
