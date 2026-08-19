@@ -1987,9 +1987,10 @@ img {
 }
 
 @media (max-width: 640px) {
-  .chat-widget__panel {
+ .chat-widget__panel {
     width: calc(100% - 2rem);
-    height: calc(100% - 6rem);
+    height: calc(100dvh - 8rem);
+    max-height: calc(100dvh - 8rem);
     right: 1rem;
     bottom: 5.5rem;
   }
@@ -2668,6 +2669,11 @@ img {
   .contact__form-row {
     flex-direction: column; /* los 4 inputs se apilan */
   }
+
+  .contact__form-col {
+  width: 100%;
+  flex: none;
+}
   
   /* ---------- Footer ---------- */
   .footer {
@@ -3010,10 +3016,10 @@ img {
   }
 
 .who-we-are__mobile-photo-crop img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  object-position: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
   .who-we-are__bio {
@@ -3126,6 +3132,11 @@ img {
 .contact__form-card {
   width: 100%;
   height: auto;
+}
+
+.contact__form-col {
+  width: auto;
+  flex: 1;
 }
 
 /* ---------- Footer ---------- */
