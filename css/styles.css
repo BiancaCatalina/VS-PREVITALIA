@@ -55,6 +55,10 @@ img {
   max-width: 100%;
   display: block;
 }
+
+html, body {
+  overflow-x: hidden;
+}
  
 /* ==========================================================================
    CONTENEDOR GENERAL DEL SITIO
@@ -1300,14 +1304,23 @@ img {
 /* ==========================================================================
    FOOTER
    ========================================================================== */
+/* ---------- Footer ---------- */
 .footer {
-  /* deja tu background actual (el navy), solo actualiza el padding: */
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem; /* 36px */
+
   padding: 4.5rem 4rem; /* 72px arriba/abajo, 64px lados */
+  background: linear-gradient(to bottom, var(--azul-500), var(--azul-azul) 50%);
 }
 
 .footer__top {
   max-width: 67.5625rem; /* 1081px */
   margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1338,9 +1351,9 @@ img {
 }
 
 .footer__col-title {
-  font-family: 'Lexend', sans-serif;
+  font-family: var(--font-body);
   font-weight: 500;
-  color: #98c0c8;
+  color: var(--petroleo);
   margin: 0;
 }
 
@@ -1350,19 +1363,55 @@ img {
   padding: 0;
   display: flex;
   flex-direction: column;
-  font-family: 'Lexend', sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
-  color: #fff;
+  color: var(--blanco);
 }
 
 .footer__col-list li {
   line-height: 1.25rem;
 }
 
-.footer__col-list a,
 .footer__col-list span {
   color: inherit;
+}
+
+.footer__col-list a,
+.footer__legal-link {
+  color: inherit;
   text-decoration: none;
+  width: fit-content;
+  transition: color 0.33s ease-in-out;
+}
+
+.footer__col-list a span,
+.footer__legal-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: color 0.33s ease-in-out, background-size 0.33s ease-in-out;
+}
+
+.footer__col-list a:hover,
+.footer__legal-link:hover {
+  color: var(--petroleo);
+}
+
+.footer__col-list a:hover span,
+.footer__legal-link:hover {
+  background-size: 100% 1px;
+}
+
+.footer__col-list a:active,
+.footer__legal-link:active {
+  color: var(--petroleo-400);
+}
+
+.footer__col-list a:active span,
+.footer__legal-link:active {
+  transition-duration: 80ms;
+  transition-timing-function: linear;
 }
 
 .footer__col--contact {
@@ -1397,30 +1446,33 @@ img {
 }
 
 .footer__contact-label {
-  font-family: 'Lexend', sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #98c0c8;
+  color: var(--petroleo);
 }
 
 .footer__contact-value {
-  font-family: 'Lexend', sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: #fff;
+  color: var(--blanco);
   margin: 0;
   width: 100%;
 }
 
 .footer__divider {
-  margin: 2.25rem 0; /* 36px arriba/abajo */
+  width: 100%;
+  max-width: 67.5625rem;
+  margin: 0;
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .footer__bottom {
+  width: 100%;
   max-width: 67.5625rem;
   margin: 0 auto;
   display: flex;
@@ -1430,12 +1482,11 @@ img {
 }
 
 .footer__legal-link {
-  font-family: 'Lexend', sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #fff;
-  text-decoration: none;
+  color: var(--blanco);
 }
 
 .footer__legal-link--privacy { order: 1; }
@@ -1454,11 +1505,11 @@ img {
 }
 
 .footer__copyright span {
-  font-family: 'Lexend', sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #fff;
+  color: var(--blanco);
   white-space: nowrap;
 }
 
@@ -2611,27 +2662,35 @@ img {
  /* ---------- Footer ---------- */
   .footer {
     padding: 5rem 1rem; /* 80px arriba/abajo, 16px lados */
+    gap: 0.75rem; /* 12px entre el bloque superior y el bloque inferior */
   }
 
   .footer__top {
     max-width: none;
     flex-direction: column;
-    gap: 2rem; /* 32px */
+    align-items: center;
+    gap: 2rem; /* 32px entre logo y columnas */
   }
 
   .footer__logo {
+    width: 22.5rem;
     margin: 0 auto;
   }
 
-  .footer__columns {
-    width: 100%;
-    justify-content: center;
-    gap: 2.25rem; /* 36px */
+  .footer__divider {
+    display: none; /* se reemplaza por un borde en .footer__col--contact */
   }
 
-  .footer__col,
-  .footer__col-title,
-  .footer__col-list {
+  .footer__columns {
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 2.25rem; /* 36px */
+    row-gap: 2rem; /* 32px */
+    width: 100%;
+  }
+
+  .footer__col {
+    gap: 0.5rem; /* 8px */
     text-align: center;
     align-items: center;
   }
@@ -2641,7 +2700,10 @@ img {
   }
 
   .footer__col--contact {
+    flex-basis: 100%;
     width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* reemplaza el <hr> real */
+    padding-top: 2rem;
   }
 
   .footer__contact-list {
@@ -2653,28 +2715,42 @@ img {
     align-items: center;
   }
 
-  /* reordena a WhatsApp, Email, Ubicación */
   .footer__contact-item:nth-child(1) { order: 2; } /* Email */
   .footer__contact-item:nth-child(2) { order: 1; } /* WhatsApp */
   .footer__contact-item:nth-child(3) { order: 3; } /* Ubicación */
 
+  .footer__contact-value {
+    text-align: center;
+  }
+
+  .footer__bottom {
+    flex-wrap: wrap;
+    row-gap: 2rem; /* 32px */
+  }
+
+  .footer__legal-link--privacy { order: 2; }
+  .footer__legal-link--terms { order: 1; }
+
   .footer__legal-link {
-    font-size: 0.875rem; /* 14px, más chico que tablet/desktop */
-    line-height: 1.25rem;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+
+  .footer__copyright {
+    flex: 0 0 100%;
+    justify-content: center;
+    gap: 0.5rem; /* 8px */
+    margin-top: 2rem;
+  }
+
+  .footer__copyright-icon {
+    width: 1rem;
+    height: 1rem;
   }
 
   .footer__copyright span {
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .footer__legal-link--privacy { order: 2; } /* Política queda a la derecha */
-  .footer__legal-link--terms { order: 1; }   /* Términos queda a la izquierda */
-
-  .footer__copyright {
-    flex: 0 0 100%;
-    justify-content: center;
-    margin-top: 2rem;
   }
   /* ---------- Header páginas legales (mobile) ---------- */
   .header--legal {
@@ -3042,7 +3118,8 @@ img {
   .footer__top {
     max-width: none;
     flex-direction: column;
-    gap: 2rem; /* 32px entre logo y columnas */
+    align-items: center;
+    gap: 2rem; /* 32px */
   }
 
   .footer__logo {
