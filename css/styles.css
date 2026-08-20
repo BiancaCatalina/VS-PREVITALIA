@@ -685,6 +685,7 @@ html, body {
 /* ==========================================================================
    SERVICIOS DESTACADOS
    ========================================================================== */
+   
 .services {
   display: flex;
   flex-direction: column;
@@ -1306,7 +1307,12 @@ html, body {
    ========================================================================== */
 /* ---------- Footer ---------- */
 .footer {
-  width: 100%;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
 
   display: flex;
   flex-direction: column;
@@ -1384,23 +1390,9 @@ html, body {
   transition: color 0.33s ease-in-out;
 }
 
-.footer__col-list a span,
-.footer__legal-link {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-  transition: color 0.33s ease-in-out, background-size 0.33s ease-in-out;
-}
-
 .footer__col-list a:hover,
 .footer__legal-link:hover {
   color: var(--petroleo);
-}
-
-.footer__col-list a:hover span,
-.footer__legal-link:hover {
-  background-size: 100% 1px;
 }
 
 .footer__col-list a:active,
@@ -1408,16 +1400,17 @@ html, body {
   color: var(--petroleo-400);
 }
 
-.footer__col-list a:active span,
+.footer__col-list a:active,
 .footer__legal-link:active {
+  color: var(--petroleo-400);
   transition-duration: 80ms;
   transition-timing-function: linear;
 }
 
 .footer__col--contact {
   width: 11.1875rem; /* 179px */
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .footer__contact-list {
@@ -1429,7 +1422,7 @@ html, body {
 .footer__contact-item {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .footer__contact-item-row {
@@ -1490,10 +1483,10 @@ html, body {
 }
 
 .footer__legal-link--privacy { order: 1; }
-.footer__legal-link--terms { order: 2; }
+.footer__legal-link--terms { order: 3; }
 
 .footer__copyright {
-  order: 3;
+  order: 2;
   display: flex;
   align-items: center;
   gap: 1.125rem; /* 18px */
@@ -1555,6 +1548,10 @@ html, body {
   display: flex;
   align-items: center;
   gap: 1.25rem; /* 20px */
+}
+
+.header--legal.header--scrolled {
+  background: rgba(248, 247, 246, 0.9); /* sand-100 al 90% */
 }
 
 .header__nav-links {
@@ -2286,13 +2283,13 @@ html, body {
   }
 
   .why-us__card {
-   flex: none;
-  width: 100%; 
-  height: 16.5rem; /* 264px, tarjetas 1 y 3 */
-  }
+  flex: none;
+  width: 100%;
+  min-height: 16.5rem; /* antes: height */
+}
 
   .why-us__card--lenguaje {
-  height: 19rem;
+  min-height: 19rem; /* antes: height */
 }
 
 .why-us__card h3 {
@@ -2309,6 +2306,37 @@ html, body {
 }
 
 /* ---------- Servicios destacados ---------- */
+
+/* carrusel horizontal deslizable */
+.services__grid--mobile-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 2rem;
+  gap: 1.25rem;
+  width: 100vw;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.services__grid--mobile-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.services__card {
+  flex: none;
+  width: 16.25rem; /* 260px */
+  min-height: 19.1875rem;
+  scroll-snap-align: start;
+}
+
   .services {
     padding: 5rem 1rem; /* 80px 16px */
     gap: 0;
@@ -2331,38 +2359,6 @@ html, body {
     line-height: 1.5rem; /* 24px */
     letter-spacing: normal;
     color: var(--gris-500);
-  }
-
-  /* carrusel horizontal deslizable */
-  .services__grid--mobile-scroll {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 1rem; 
-  gap: 1.25rem;
-  width: 100vw;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-  .services__grid--mobile-scroll::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
-
-  .services__card {
-    flex: none;
-    width: 16.25rem; /* 260px */
-    scroll-snap-align: start;
-  }
-
-  .services__card--capacitaciones {
-    height: auto;
   }
 
   .services__card h3 {
@@ -2644,11 +2640,11 @@ html, body {
     height: auto;
   }
 
-  .contact__form-title {
-    font-size: 2rem;          /* 32px */
-    line-height: 2.5rem;      /* 40px */
-    letter-spacing: -0.04rem; /* -0.64px */
-  }
+ .contact__form-title {
+  font-size: 1.5rem;        /* 24px, antes 2rem */
+  line-height: 2rem;        /* 32px, antes 2.5rem */
+  letter-spacing: -0.03rem; /* ajustado proporcionalmente */
+}
 
   .contact__form-row {
     flex-direction: column; /* los 4 inputs se apilan */
@@ -2737,6 +2733,7 @@ html, body {
   }
 
   .footer__copyright {
+    order: 3;
     flex: 0 0 100%;
     justify-content: center;
     gap: 0.5rem; /* 8px */
@@ -2752,6 +2749,17 @@ html, body {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
+
+  .footer__contact-item {
+  align-items: center;
+}
+
+.footer__contact-value {
+  width: auto;
+  text-align: center;
+}
+
+
   /* ---------- Header páginas legales (mobile) ---------- */
   .header--legal {
     height: 4rem;
@@ -2778,6 +2786,41 @@ html, body {
   .legal__eyebrow-line {
     width: 1.5625rem; /* 25px */
   }
+
+  .legal {
+  padding-top: 6rem; /* 96px = 64px del header + 32px de separación */
+}
+
+.legal {
+  padding-left: 1rem;  /* 16px, no 1.5rem que estabas heredando de desktop */
+  padding-right: 1rem;
+}
+
+.legal__title {
+  font-size: 2rem;          /* 32px */
+  line-height: 2.5rem;      /* 40px */
+  letter-spacing: -0.04rem; /* -0.64px */
+}
+
+.legal__item-head {
+  gap: 1rem; /* 16px, antes 2rem */
+}
+
+.legal__item-number {
+  width: 1.75rem;  /* 28px, antes 2.25rem */
+  height: 1.75rem; /* 28px */
+}
+
+.legal__item-title {
+  font-size: 1rem;     /* 16px */
+  line-height: 1.5rem; /* 24px */
+  letter-spacing: normal;
+}
+
+.legal__note-text {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
 
 }
 
@@ -2865,6 +2908,8 @@ html, body {
      .shape--teal-bottom y .checklist__item no cambian: mismas medidas que desktop */
 
      /* ---------- Por qué elegir PREVITALIA ---------- */
+
+     
   .why-us {
     padding-top: 5rem;    /* 80px */
     padding-bottom: 5rem; /* 80px */
@@ -2893,27 +2938,6 @@ html, body {
   .services {
     padding: 5rem 2rem; /* 80px / 32px */
     gap: 2rem; /* 32px */
-  }
-
-  .services__grid--mobile-scroll {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-  width: 100vw;
-  margin-left: -2rem;
-  margin-right: -2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  align-self: flex-start; 
-   scroll-padding-left: 2rem; 
-}
-
-  .services__grid--mobile-scroll::-webkit-scrollbar {
-    display: none;
   }
 
   .services__card {
@@ -2956,40 +2980,25 @@ html, body {
     width: 100%;
   }
   .who-we-are__mobile-photo-circle {
-    position: relative;
-    width: 25.625rem;
-    height: 25.625rem;
-    margin: 0 auto;
-  }
-  .who-we-are__mobile-photo-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25.625rem;
-    height: 25.625rem;
-    border-radius: 50%;
-    background: #F8F7F6;
-  }
-  .who-we-are__mobile-photo-crop {
-    display: flex;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 21.875rem;
-    height: 23.9375rem;
-    border-radius: 50%;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-  }
+  width: 25.625rem;
+  height: 25.875rem; /* antes 25.625rem */
+}
+
+.who-we-are__mobile-photo-bg {
+  width: 25.625rem;
+  height: 25.625rem; /* sin cambio, ya estaba correcto */
+}
+
+.who-we-are__mobile-photo-crop {
+  width: 23.641rem;  /* antes 21.875rem */
+  height: 25.875rem; /* antes 23.9375rem */
+}
 
 .who-we-are__mobile-photo-crop img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;      /* antes cover */
+  object-position: center;  /* antes center top */
 }
 
   .who-we-are__bio {
@@ -3042,10 +3051,15 @@ html, body {
 }
 
 .sectors__grid {
-  flex-wrap: wrap;
-  justify-content: center;
-  row-gap: 0.75rem; /* 12px */
-  column-gap: 1rem; /* 16px */
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .sectors__item {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .testimonials {
@@ -3088,7 +3102,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   height: auto;
-  gap: 0;
+  gap: 0.75rem; /* 12px, antes 0 */
 }
 
 .contact__row {
@@ -3109,7 +3123,7 @@ html, body {
   flex: 1;
 }
 
-/* ---------- Footer ---------- */
+
  /* ---------- Footer ---------- */
   .footer {
     padding: 5rem 2rem; /* 80px arriba/abajo, 32px lados */
@@ -3136,6 +3150,7 @@ html, body {
   }
 
   .footer__copyright {
+    order: 3;
     flex: 0 0 100%;
     justify-content: center;
     margin-top: 2rem;
@@ -3241,4 +3256,3 @@ html, body {
   top: 0.75rem; /* 12px: (64px - 40px) / 2 */
 }
 
-}

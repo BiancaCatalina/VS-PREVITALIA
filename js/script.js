@@ -111,6 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
     '.contact__intro',
     '.contact__card',
     '.contact__form-card',
+    '.legal__intro',
+    '.legal__item',
+    '.legal__note',
   ];
 
   const elements = document.querySelectorAll(groupSelectors.join(', '));
@@ -196,11 +199,12 @@ document.addEventListener('DOMContentLoaded', function () {
     el.style.transitionDelay = `${Math.min(i * 90, 360)}ms`;
   });
 
-  // Fuerza al navegador a "pintar" el estado inicial antes de animar
   void statsCards[0].offsetHeight;
 
   requestAnimationFrame(() => {
-    statsCards.forEach((el) => el.classList.add('is-visible'));
+    requestAnimationFrame(() => {
+      statsCards.forEach((el) => el.classList.add('is-visible'));
+    });
   });
 });
 
@@ -402,3 +406,33 @@ chatForm.addEventListener('submit', async (e) => {
     chatInput.focus();
   }
 });
+
+(function () {
+  const chatPanel = document.getElementById('chatPanel');
+  if (!chatPanel || !window.visualViewport) return;
+
+  function isMobile() {
+    return window.innerWidth <= 640;
+  }
+
+  function updateChatPanelForKeyboard() {
+    if (!isMobile() || !chatPanel.classList.contains('is-open')) {
+      chatPanel.style.bottom = '';
+      chatPanel.style.maxHeight = '';
+      return;
+    }
+    const vv = window.visualViewport;
+    const keyboardOffset = Math.max(window.innerHeight - vv.height - vv.offsetTop, 0);
+    const margin = 16; // 1rem de margen mínimo
+    chatPanel.style.bottom = `${keyboardOffset + margin}px`;
+    chatPanel.style.maxHeight = `${vv.height - 32}px`; // 2rem de margen arriba
+  }
+
+  window.visualViewport.addEventListener('resize', updateChatPanelForKeyboard);
+  window.visualViewport.addEventListener('scroll', updateChatPanelForKeyboard);
+
+  const chatToggle = document.getElementById('chatToggle');
+  if (chatToggle) {
+    chatToggle.addEventListener('click', () => setTimeout(updateChatPanelForKeyboard, 50));
+  }
+})();
