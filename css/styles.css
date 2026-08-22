@@ -2314,13 +2314,13 @@ html, body {
   align-items: stretch;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding-left: 2rem;
+  scroll-padding-left: 1rem;   /* antes 2rem */
   gap: 1.25rem;
   width: 100vw;
-  margin-left: -2rem;
-  margin-right: -2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  margin-left: -1rem;   /* antes -2rem */
+  margin-right: -1rem;  /* antes -2rem */
+  padding-left: 1rem;   /* antes 2rem */
+  padding-right: 1rem;  /* antes 2rem */
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -2940,13 +2940,6 @@ html, body {
     gap: 2rem; /* 32px */
   }
 
-  .services__card {
-    flex: none;
-    width: 27.125rem; /* 434px */
-    height: auto;
-    scroll-snap-align: start;
-  }
-
   .services__dots {
     display: flex;
     justify-content: center;
@@ -2965,6 +2958,36 @@ html, body {
   .services__dot--active {
     background-color: #A1A4A7;
   }
+
+  .services__grid--mobile-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 2rem;
+    gap: 1rem; /* 16px, según Figma tablet */
+    width: 100vw;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .services__grid--mobile-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services__card {
+    flex: none;
+    width: 27.125rem;      /* 434px */
+    min-height: 22.6875rem; /* 363px */
+    scroll-snap-align: start;
+  }
+}
 
   /* ---------- Quién está detrás de PREVITALIA ---------- */
 @media (min-width: 641px) and (max-width: 1024px) {
