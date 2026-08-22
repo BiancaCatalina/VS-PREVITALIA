@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '.sectors__intro',
     '.sectors__item',
     '.contact__intro',
+    '.what-we-do__graphic',
     '.contact__card',
     '.contact__form-card',
     '.legal__intro',
@@ -119,8 +120,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const elements = document.querySelectorAll(groupSelectors.join(', '));
   if (!elements.length) return;
 
-  // Escalona el retraso entre elementos que comparten el mismo padre
-  // (por ejemplo, las 3 tarjetas de "Por qué elegirnos" aparecen una tras otra)
   const delayCounters = new Map();
   elements.forEach((el) => {
     el.classList.add('js-reveal');
@@ -129,6 +128,31 @@ document.addEventListener('DOMContentLoaded', function () {
     el.style.transitionDelay = `${Math.min(count * 90, 360)}ms`;
     delayCounters.set(parent, count + 1);
   });
+
+  function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight && rect.bottom > 0;
+  }
+
+  const alreadyVisible = [];
+  const toObserve = [];
+
+  elements.forEach((el) => {
+    if (isInViewport(el)) {
+      alreadyVisible.push(el);
+    } else {
+      toObserve.push(el);
+    }
+  });
+
+  if (alreadyVisible.length) {
+    void alreadyVisible[0].offsetHeight;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        alreadyVisible.forEach((el) => el.classList.add('is-visible'));
+      });
+    });
+  }
 
   const observer = new IntersectionObserver(
     (entries, obs) => {
@@ -146,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
     { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
   );
 
-  elements.forEach((el) => observer.observe(el));
+  toObserve.forEach((el) => observer.observe(el));
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -212,16 +236,25 @@ document.addEventListener('DOMContentLoaded', function () {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const heroElements = document.querySelectorAll('.hero__title, .hero__subtitle, .hero__actions');
   if (!heroElements.length || prefersReducedMotion) return;
+
   heroElements.forEach((el, i) => {
     el.classList.add('js-reveal', 'js-reveal--hero');
     el.style.transitionDelay = `${i * 200}ms`;
   });
-  void heroElements[0].offsetHeight;
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      heroElements.forEach((el) => el.classList.add('is-visible'));
-    });
-  });
+
+  const heroObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          heroElements.forEach((el) => el.classList.add('is-visible'));
+          obs.disconnect();
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  heroObserver.observe(heroElements[0]);
 
 document.addEventListener('DOMContentLoaded', function () {
   const legalHeader = document.querySelector('.header--legal');

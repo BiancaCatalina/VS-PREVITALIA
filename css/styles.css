@@ -2874,11 +2874,9 @@ html, body {
   .stats {
   flex-wrap: nowrap;
   gap: 1rem;
-  width: calc(100% - 2rem); /* respeta el margen izquierdo, se ajusta al ancho real */
-  max-width: 44rem;
-  margin-left: 2rem;
-  margin-right: auto;
-  margin-top: -7.1875rem;
+  width: calc(100% - 4rem); /* 2rem de margen a cada lado, simétrico */
+  max-width: none;
+  margin: -7.1875rem auto 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -3010,18 +3008,32 @@ html, body {
     width: 100%;
   }
   .who-we-are__mobile-photo-circle {
+  position: relative;
   width: 25.625rem;
-  height: 25.875rem; /* antes 25.625rem */
+  height: 25.875rem;
+  margin: 0 auto;
 }
 
 .who-we-are__mobile-photo-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 25.625rem;
-  height: 25.625rem; /* sin cambio, ya estaba correcto */
+  height: 25.625rem;
+  border-radius: 50%;
+  background: var(--sand-100);
 }
 
 .who-we-are__mobile-photo-crop {
-  width: 23.641rem;  /* antes 21.875rem */
-  height: 25.875rem; /* antes 23.9375rem */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 23.641rem;
+  height: 25.875rem;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .who-we-are__mobile-photo-crop img {
