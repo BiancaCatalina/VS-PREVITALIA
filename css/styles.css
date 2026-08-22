@@ -2526,8 +2526,6 @@ html, body {
   display: block;
 }
 
-}
-
   /* ---------- Sectores donde trabajamos ---------- */
   .sectors {
     padding: 5rem 1rem; /* 80px 16px */
@@ -2830,7 +2828,7 @@ html, body {
   line-height: 1.25rem; /* 20px */
 }
 
-
+}
 
   @media (min-width: 641px) and (max-width: 1024px) {
 
@@ -3072,7 +3070,7 @@ html, body {
   
 }
 
-
+@media (min-width: 641px) and (max-width: 1024px) {
 /* ---------- Sectores donde trabajamos ---------- */
 .sectors {
   padding-top: 5rem;    /* 80px */
@@ -3292,3 +3290,4 @@ html, body {
   top: 0.75rem; /* 12px: (64px - 40px) / 2 */
 }
 
+}
