@@ -1523,6 +1523,11 @@ html, body {
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+.js-reveal--legal {
+  transform: translateY(2.5rem);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js-reveal {
     opacity: 1;

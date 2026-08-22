@@ -123,6 +123,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const delayCounters = new Map();
   elements.forEach((el) => {
     el.classList.add('js-reveal');
+    if (el.matches('.legal__intro, .legal__item, .legal__note')) {
+      el.classList.add('js-reveal--legal');
+    }
     const parent = el.parentElement;
     const count = delayCounters.get(parent) || 0;
     el.style.transitionDelay = `${Math.min(count * 90, 360)}ms`;
