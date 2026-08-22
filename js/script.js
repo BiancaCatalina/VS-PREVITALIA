@@ -212,20 +212,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const heroElements = document.querySelectorAll('.hero__title, .hero__subtitle, .hero__actions');
   if (!heroElements.length || prefersReducedMotion) return;
-
   heroElements.forEach((el, i) => {
-    el.classList.add('js-reveal');
-    el.style.transitionDelay = `${Math.min(i * 90, 360)}ms`;
+    el.classList.add('js-reveal', 'js-reveal--hero');
+    el.style.transitionDelay = `${i * 200}ms`;
   });
-
   void heroElements[0].offsetHeight;
-
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       heroElements.forEach((el) => el.classList.add('is-visible'));
     });
   });
-});
 
 document.addEventListener('DOMContentLoaded', function () {
   const legalHeader = document.querySelector('.header--legal');
@@ -455,3 +451,4 @@ chatForm.addEventListener('submit', async (e) => {
     chatToggle.addEventListener('click', () => setTimeout(updateChatPanelForKeyboard, 50));
   }
 })();
+})

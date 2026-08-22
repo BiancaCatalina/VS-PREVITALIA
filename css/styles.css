@@ -1518,6 +1518,11 @@ html, body {
   transform: none;
 }
 
+.js-reveal--hero {
+  transform: translateY(2.5rem);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .js-reveal {
     opacity: 1;
@@ -2125,7 +2130,7 @@ html, body {
 
   .mobile-menu.is-open {
   display: flex;
- height: 20.5rem; 
+  height: 26rem;
 }
 
   .mobile-menu__logo {
@@ -2333,10 +2338,10 @@ html, body {
 .services__card {
   flex: none;
   width: 16.25rem; /* 260px */
-  min-height: 19.1875rem;
+  height: 23rem;    /* fija, en vez de min-height */
+  overflow: hidden; /* red de seguridad: nunca deja que el texto se salga de la tarjeta */
   scroll-snap-align: start;
 }
-
   .services {
     padding: 5rem 1rem; /* 80px 16px */
     gap: 0;
@@ -2406,7 +2411,6 @@ html, body {
 }
 
 /* ---------- Quién está detrás de PREVITALIA ---------- */
-  @media (max-width: 640px) {
   .who-we-are {
     padding: 5rem 1rem;
   }
@@ -2711,6 +2715,10 @@ html, body {
     align-items: center;
   }
 
+  .footer__contact-item-row {
+  justify-content: center;
+}
+
   .footer__contact-item:nth-child(1) { order: 2; } /* Email */
   .footer__contact-item:nth-child(2) { order: 1; } /* WhatsApp */
   .footer__contact-item:nth-child(3) { order: 3; } /* Ubicación */
@@ -2822,7 +2830,7 @@ html, body {
   line-height: 1.25rem; /* 20px */
 }
 
-}
+
 
   @media (min-width: 641px) and (max-width: 1024px) {
 
@@ -2981,12 +2989,13 @@ html, body {
     display: none;
   }
 
-  .services__card {
-    flex: none;
-    width: 27.125rem;      /* 434px */
-    min-height: 22.6875rem; /* 363px */
-    scroll-snap-align: start;
-  }
+ .services__card {
+  flex: none;
+  width: 27.125rem;
+  height: 24rem;    /* fija, en vez de min-height */
+  overflow: hidden;
+  scroll-snap-align: start;
+}
 }
 
   /* ---------- Quién está detrás de PREVITALIA ---------- */
@@ -3083,7 +3092,7 @@ html, body {
     flex: 1;
     min-width: 0;
   }
-}
+
 
 .testimonials {
   padding-top: 5rem;    /* 80px */
@@ -3172,6 +3181,10 @@ html, body {
     max-width: none;
   }
 
+  .footer__legal-link--terms {
+  order: 2;
+}
+
   .footer__copyright {
     order: 3;
     flex: 0 0 100%;
@@ -3198,7 +3211,7 @@ html, body {
 
 .mobile-menu.is-open {
   display: flex;
-  height: 18.5625rem;
+  height: 21.5rem;
 }
 
 .mobile-menu__logo {
