@@ -103,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
     '.why-us__subtitle',
     '.why-us__card',
     '.services__intro',
-    '.services__card',
     '.who-we-are__title',
     '.who-we-are__card',
     '.sectors__intro',
@@ -150,11 +149,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (alreadyVisible.length) {
     void alreadyVisible[0].offsetHeight;
-    requestAnimationFrame(() => {
+    setTimeout(() => {
       requestAnimationFrame(() => {
-        alreadyVisible.forEach((el) => el.classList.add('is-visible'));
+        requestAnimationFrame(() => {
+          alreadyVisible.forEach((el) => el.classList.add('is-visible'));
+        });
       });
-    });
+    }, 300);
   }
 
   const observer = new IntersectionObserver(
@@ -245,19 +246,21 @@ document.addEventListener('DOMContentLoaded', function () {
     el.style.transitionDelay = `${i * 200}ms`;
   });
 
-  const heroObserver = new IntersectionObserver(
+ const heroObserver = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          heroElements.forEach((el) => el.classList.add('is-visible'));
+          setTimeout(() => {
+            heroElements.forEach((el) => el.classList.add('is-visible'));
+          }, 300);
           obs.disconnect();
         }
       });
     },
     { threshold: 0.15 }
   );
-
   heroObserver.observe(heroElements[0]);
+  });
 
 document.addEventListener('DOMContentLoaded', function () {
   const legalHeader = document.querySelector('.header--legal');
@@ -297,6 +300,57 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.querySelector('.services__grid--mobile-scroll');
+  const cards = track ? track.querySelectorAll('.services__card') : [];
+  const dots = document.querySelectorAll('.services__dot');
+  if (!track || !cards.length || !dots.length) return;
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const card = cards[i];
+      if (!card) return;
+      track.scrollTo({
+        left: card.offsetLeft - track.offsetLeft,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  let ticking = false;
+
+  function updateActiveDot() {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    let closestIndex = 0;
+
+    if (track.scrollLeft >= maxScroll - 2) {
+      closestIndex = cards.length - 1;
+    } else {
+      let closestDistance = Infinity;
+      cards.forEach((card, i) => {
+        const distance = Math.abs(card.offsetLeft - track.offsetLeft - track.scrollLeft);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = i;
+        }
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('services__dot--active', i === closestIndex);
+    });
+
+    ticking = false;
+  }
+
+  track.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateActiveDot);
+      ticking = true;
+    }
+  }, { passive: true });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -487,4 +541,4 @@ chatForm.addEventListener('submit', async (e) => {
     chatToggle.addEventListener('click', () => setTimeout(updateChatPanelForKeyboard, 50));
   }
 })();
-})
+

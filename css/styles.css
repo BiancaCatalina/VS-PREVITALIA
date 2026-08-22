@@ -758,6 +758,7 @@ html, body {
   line-height: 1.5rem;
   color: var(--azul-azul);
   transition: color 0.33s ease-in-out, transform 0.33s ease-in-out;
+  margin-top: auto;
 }
 
 .services__link:hover {
@@ -2343,7 +2344,7 @@ html, body {
 .services__card {
   flex: none;
   width: 16.25rem; /* 260px */
-  height: 23rem;    /* fija, en vez de min-height */
+  height: 25.4375rem;    /* fija, en vez de min-height */
   overflow: hidden; /* red de seguridad: nunca deja que el texto se salga de la tarjeta */
   scroll-snap-align: start;
 }
@@ -2993,7 +2994,7 @@ html, body {
  .services__card {
   flex: none;
   width: 27.125rem;
-  height: 24rem;    /* fija, en vez de min-height */
+  height: 22.6875rem;    /* fija, en vez de min-height */
   overflow: hidden;
   scroll-snap-align: start;
 }
@@ -3145,11 +3146,12 @@ html, body {
 }
 
 .contact__card {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
   height: auto;
-  gap: 0.75rem; /* 12px, antes 0 */
+  gap: 0.875rem; /* 14px, según Figma */
+  padding: 1.5rem 3rem 2rem; /* 24px 48px 32px, según Figma */
 }
 
 .contact__row {
