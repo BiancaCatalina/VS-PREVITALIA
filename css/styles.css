@@ -2354,6 +2354,7 @@ html, body {
   padding-right: 1rem;  /* antes 2rem */
   scrollbar-width: none;
   -ms-overflow-style: none;
+  filter: none;
 }
 
 .services__grid--mobile-scroll::-webkit-scrollbar {
@@ -2366,6 +2367,7 @@ html, body {
   height: 25.4375rem;    /* fija, en vez de min-height */
   overflow: hidden; /* red de seguridad: nunca deja que el texto se salga de la tarjeta */
   scroll-snap-align: start;
+  box-shadow: var(--shadow-sm-1), var(--shadow-sm-2);
 }
   .services {
     padding: 5rem 1rem; /* 80px 16px */
