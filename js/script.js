@@ -119,8 +119,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const elements = document.querySelectorAll(groupSelectors.join(', '));
   if (!elements.length) return;
 
-  const delayCounters = new Map();
+const delayCounters = new Map();
   elements.forEach((el) => {
+    el.style.transition = 'none';
     el.classList.add('js-reveal');
     if (el.matches('.legal__intro, .legal__item, .legal__note')) {
       el.classList.add('js-reveal--legal');
@@ -130,6 +131,9 @@ document.addEventListener('DOMContentLoaded', function () {
     el.style.transitionDelay = `${Math.min(count * 90, 360)}ms`;
     delayCounters.set(parent, count + 1);
   });
+
+  void elements[0].offsetHeight;
+  elements.forEach((el) => { el.style.transition = ''; });
 
   function isInViewport(el) {
     const rect = el.getBoundingClientRect();
@@ -242,9 +246,13 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!heroElements.length || prefersReducedMotion) return;
 
   heroElements.forEach((el, i) => {
+    el.style.transition = 'none';
     el.classList.add('js-reveal', 'js-reveal--hero');
     el.style.transitionDelay = `${i * 200}ms`;
   });
+
+  void heroElements[0].offsetHeight;
+  heroElements.forEach((el) => { el.style.transition = ''; });
 
  const heroObserver = new IntersectionObserver(
     (entries, obs) => {

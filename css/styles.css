@@ -1565,6 +1565,10 @@ html, body {
   background: rgba(248, 247, 246, 0.9); /* sand-100 al 90% */
 }
 
+.header--legal.header--hidden {
+  transform: translateY(-100%);
+}
+
 .header__nav-links {
   display: flex;
   align-items: center;
@@ -2332,7 +2336,6 @@ html, body {
   margin-right: -1rem;  /* antes -2rem */
   padding-left: 1rem;   /* antes 2rem */
   padding-right: 1rem;  /* antes 2rem */
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
