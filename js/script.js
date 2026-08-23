@@ -3,8 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const mobileMenu = document.getElementById('mobileMenu');
   const menuClose = document.getElementById('mobileMenuClose');
   const menuLinks = mobileMenu.querySelectorAll('a');
+  const header = document.querySelector('.header, .header--legal');
 
   function openMenu() {
+    if (header && header.classList.contains('header--scrolled')) {
+      mobileMenu.classList.add('mobile-menu--scrolled');
+    } else {
+      mobileMenu.classList.remove('mobile-menu--scrolled');
+    }
     mobileMenu.classList.add('is-open');
   }
 
@@ -227,17 +233,32 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!statsCards.length || prefersReducedMotion) return;
 
   statsCards.forEach((el, i) => {
+    el.style.transition = 'none';
     el.classList.add('js-reveal');
     el.style.transitionDelay = `${Math.min(i * 90, 360)}ms`;
   });
 
   void statsCards[0].offsetHeight;
+  statsCards.forEach((el) => { el.style.transition = ''; });
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      statsCards.forEach((el) => el.classList.add('is-visible'));
-    });
-  });
+  const statsObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                statsCards.forEach((el) => el.classList.add('is-visible'));
+              });
+            });
+          }, 300);
+          obs.disconnect();
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  statsObserver.observe(statsCards[0]);
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -310,56 +331,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', onScroll, { passive: true });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const track = document.querySelector('.services__grid--mobile-scroll');
-  const cards = track ? track.querySelectorAll('.services__card') : [];
-  const dots = document.querySelectorAll('.services__dot');
-  if (!track || !cards.length || !dots.length) return;
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      const card = cards[i];
-      if (!card) return;
-      track.scrollTo({
-        left: card.offsetLeft - track.offsetLeft,
-        behavior: 'smooth'
-      });
-    });
-  });
-
-  let ticking = false;
-
-  function updateActiveDot() {
-    const maxScroll = track.scrollWidth - track.clientWidth;
-    let closestIndex = 0;
-
-    if (track.scrollLeft >= maxScroll - 2) {
-      closestIndex = cards.length - 1;
-    } else {
-      let closestDistance = Infinity;
-      cards.forEach((card, i) => {
-        const distance = Math.abs(card.offsetLeft - track.offsetLeft - track.scrollLeft);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = i;
-        }
-      });
-    }
-
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('services__dot--active', i === closestIndex);
-    });
-
-    ticking = false;
-  }
-
-  track.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateActiveDot);
-      ticking = true;
-    }
-  }, { passive: true });
-});
 
 document.addEventListener('DOMContentLoaded', function () {
   const track = document.querySelector('.services__grid--mobile-scroll');

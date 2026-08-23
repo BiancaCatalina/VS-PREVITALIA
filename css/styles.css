@@ -2169,6 +2169,22 @@ html, body {
   filter: brightness(0) invert(1);
 }
 
+.mobile-menu--scrolled .mobile-menu__logo {
+  top: 0.75rem; /* 12px: header centrado en scroll, (64px - 40px) / 2 */
+}
+
+.mobile-menu--scrolled .mobile-menu__close {
+  top: 0.75rem; /* 12px */
+}
+
+.mobile-menu--legal .mobile-menu__logo {
+  top: 0.75rem; /* 12px: header legal siempre centrado en mobile */
+}
+
+.mobile-menu--legal .mobile-menu__close {
+  top: 0.75rem; /* 12px */
+}
+
   .mobile-menu__nav {
     display: flex;
     flex-direction: column;
@@ -3252,6 +3268,14 @@ html, body {
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+.mobile-menu--scrolled .mobile-menu__logo {
+  top: 0.5625rem; /* 9px: header centrado en scroll, (64px - 46.6px) / 2 */
+}
+
+.mobile-menu--scrolled .mobile-menu__close {
+  top: 0.75rem; /* 12px */
 }
 
 .mobile-menu__nav {
