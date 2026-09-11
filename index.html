@@ -52,6 +52,8 @@
 
 <div class="page">
 
+  <main>
+
 <!-- ============ HERO (incluye el Header dentro) ============ -->
   <section id="inicio" class="hero">
 
@@ -509,7 +511,7 @@
           </div>
           <div class="contact__text">
             <p class="contact__label">WhatsApp</p>
-            <p class="contact__value">+569 1234 5678</p>
+            <p class="contact__value">+569 9221 7313</p>
           </div>
         </div>
 
@@ -534,35 +536,36 @@
   <div class="contact__form-row">
     <div class="contact__form-col">
       <div class="contact__field">
-        <label class="contact__form-label">Nombre completo *</label>
-        <input type="text" name="name" class="contact__input" required>
+        <label class="contact__form-label" for="contactName">Nombre completo *</label>
+        <input type="text" id="contactName" name="name" class="contact__input" required>
       </div>
       <div class="contact__field">
-        <label class="contact__form-label">Correo *</label>
-        <input type="email" name="email" class="contact__input" required>
+        <label class="contact__form-label" for="contactEmail">Correo *</label>
+        <input type="email" id="contactEmail" name="email" class="contact__input" required>
       </div>
     </div>
     <div class="contact__form-col">
       <div class="contact__field">
-        <label class="contact__form-label">Empresa</label>
-        <input type="text" name="company" class="contact__input">
+        <label class="contact__form-label" for="contactCompany">Empresa</label>
+        <input type="text" id="contactCompany" name="company" class="contact__input">
       </div>
       <div class="contact__field">
-        <label class="contact__form-label">Teléfono</label>
-        <input type="tel" name="phone" class="contact__input">
+        <label class="contact__form-label" for="contactPhone">Teléfono</label>
+        <input type="tel" id="contactPhone" name="phone" class="contact__input">
       </div>
     </div>
   </div>
 
   <div class="contact__field">
-    <label class="contact__form-label">Cuéntanos qué necesitas *</label>
-    <textarea name="message" class="contact__textarea" required></textarea>
+    <label class="contact__form-label" for="contactMessage">Cuéntanos qué necesitas *</label>
+    <textarea id="contactMessage" name="message" class="contact__textarea" required></textarea>
   </div>
 
   <button type="submit" class="contact__submit">Quiero una asesoría</button>
 </form>
     </div>
   </section>
+  </main>
 
   <!-- ============ FOOTER ============ -->
 <footer class="footer">
