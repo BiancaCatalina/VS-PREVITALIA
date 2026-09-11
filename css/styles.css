@@ -1975,15 +1975,7 @@ html, body {
   height: 1.25rem;
 }
 
-@media (max-width: 640px) {
- .chat-widget__panel {
-    width: calc(100% - 2rem);
-    height: calc(100dvh - 8rem);
-    max-height: calc(100dvh - 8rem);
-    right: 1rem;
-    bottom: 5.5rem;
-  }
-}
+
 
 .who-we-are__text--mobile {
   display: none;
@@ -2001,6 +1993,14 @@ html, body {
    RESPONSIVE — MOBILE (hasta 640px)
    ========================================================================== */
 @media (max-width: 640px) {
+
+  .chat-widget__panel {
+    width: calc(100% - 2rem);
+    height: calc(100dvh - 8rem);
+    max-height: calc(100dvh - 8rem);
+    right: 1rem;
+    bottom: 5.5rem;
+  }
 
   /* ---------- Header ---------- */
   .header {
