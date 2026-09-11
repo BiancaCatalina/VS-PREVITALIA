@@ -2853,9 +2853,13 @@ html, body {
 
 }
 
-  @media (min-width: 641px) and (max-width: 1024px) {
+/* ==========================================================================
+   RESPONSIVE — TABLET (MINIMO 641 MÁXIMO 1024px)
+   ========================================================================== */
 
-  /* ---------- Header ---------- */
+@media (min-width: 641px) and (max-width: 1024px) {
+
+/* ---------- Header ---------- */
   .header__right {
     display: none;
   }
@@ -2929,9 +2933,6 @@ html, body {
     gap: 1rem; /* 16px */
   }
 
-  /* .what-we-do__graphic, .shape--navy, .shape--photo, .shape--teal-top,
-     .shape--teal-bottom y .checklist__item no cambian: mismas medidas que desktop */
-
      /* ---------- Por qué elegir PREVITALIA ---------- */
 
      
@@ -2948,16 +2949,13 @@ html, body {
 
   .why-us__cards {
   flex-direction: column;
-  align-items: center;   /* centra las tarjetas de 524px */
-  gap: 1rem;
+  align-items: center;   
 }
 
   .why-us__card {
   width: 32.75rem;  /* 524px */
   flex: none;
-}
-  /* .why-us__card, .why-us__icon, .why-us__desc, .why-us__subtitle
-     no cambian: mismas medidas que desktop */
+  }
 
      /* ---------- Servicios destacados ---------- */
   .services {
@@ -3013,11 +3011,10 @@ html, body {
   overflow: hidden;
   scroll-snap-align: start;
 }
-}
 
-  /* ---------- Quién está detrás de PREVITALIA ---------- */
-@media (min-width: 641px) and (max-width: 1024px) {
-  .who-we-are__photo {
+/* ---------- Quién está detrás de PREVITALIA ---------- */
+
+.who-we-are__photo {
     display: none;
   }
 
@@ -3100,10 +3097,6 @@ html, body {
     display: block;
   }
 
-  
-}
-
-@media (min-width: 641px) and (max-width: 1024px) {
 /* ---------- Sectores donde trabajamos ---------- */
 .sectors {
   padding-top: 5rem;    /* 80px */
